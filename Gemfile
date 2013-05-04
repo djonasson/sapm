@@ -29,10 +29,11 @@ end
 # To use debugger
 # gem 'debugger'
 
+gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'simple_form'
-gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'tabulous'
 
 group :development do
