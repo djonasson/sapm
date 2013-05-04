@@ -1,0 +1,37 @@
+.site-navigation
+  .container-fluid
+    .row
+      .span3
+        %h4 About
+        %ul
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+      .span3
+        %h4 Support
+        %ul
+          %li= link_to "Frequently Asked Questions", root_url
+          %li= link_to "Ask a Question", root_url
+          %li= link_to "Tutorials", root_url
+          %li= link_to "Feedback", root_url
+      .span3
+        %h4 Legal
+        %ul
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+      .span3
+        %h4 Contact
+        %ul
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+          %li= link_to "About Us", root_url
+
+.copyrights
+  .container-fluid
+    %small
+      = raw "&copy; 2013-#{Date.today.year}"
+      = link_to 'sapm.org', root_url

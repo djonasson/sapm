@@ -1,0 +1,21 @@
+!!! 5
+
+%head= render 'layouts/partials/head'
+
+%body
+
+  // Render the header, navigation and any other mark-up
+  = render 'layouts/partials/header'
+
+  .main
+    .container-fluid
+
+      // Render any flash messages
+      = render 'layouts/partials/flash_messages', locals: { flash: flash }
+
+      // This will yield the current view
+      = yield
+
+  %footer
+    // Render the footer
+    = render 'layouts/partials/footer'
