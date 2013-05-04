@@ -38,25 +38,25 @@ gem 'tabulous'
 
 group :development do
   gem 'thin'
-  gem "guard-rspec"
-  gem "guard-spork"
-  gem "rb-inotify", ">= 0.9.0"
-  gem "awesome_print"
-  gem "rails-erd"
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-inotify', '>= 0.9.0'
+  gem 'awesome_print'
+  gem 'rails-erd'
 end
 
 group :test do
-  gem "capybara"
-  gem "coveralls", require: false
+  gem 'capybara'
+  gem 'coveralls', require: false
   gem 'cucumber-rails'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
-  gem "rspec-rails"
-  gem "shoulda-matchers"
-  gem "simplecov", require: false
-  gem "spork"
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'spork'
 end
 
 group :development, :test do
-  gem "sqlite3"
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
