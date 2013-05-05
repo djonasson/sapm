@@ -1,3 +1,12 @@
+def fill_in_user_form(user, new=true)
+  fill_in "user_email", with: user.email
+  fill_in "user_password", with: user.password if new
+  fill_in "user_name", with: user.name
+  button_name = new ? "Create User" : "Update User"
+  click_on button_name
+end
+
+
 Given(/^I'm logged in as an administrator$/) do
   sign_in_as_administrator
 end
@@ -7,19 +16,15 @@ Given(/^I'm on the new user page$/) do
 end
 
 When(/^I enter valid user data$/) do
-  user = FactoryGirl.build(:user)
-  fill_in "user_email", with: user.email
-  fill_in "user_password", with: user.password
-  fill_in "user_name", with: user.name
-  click_on "Create User"
+  fill_in_user_form FactoryGirl.build(:user)
 end
 
 Then(/^I should see a successful user creation message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "Successfully created user"
 end
 
 Then(/^I should be on the edit page for the newly created user$/) do
-  pending # express the regexp above with the code you wish you had
+  current_path.should == edit_user_path(User.last)
 end
 
 Then(/^a confirmation e\-mail should have been sent to the user$/) do
@@ -27,43 +32,39 @@ Then(/^a confirmation e\-mail should have been sent to the user$/) do
 end
 
 When(/^I enter an invalid e\-mail$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in_user_form FactoryGirl.build(:user, email: '-')
 end
 
 Then(/^I should see an invalid e\-mail message$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should be on the new user page$/) do
-  pending # express the regexp above with the code you wish you had
+  find('.user_email').should have_content("is invalid")
 end
 
 When(/^I forget to enter an e\-mail$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in_user_form FactoryGirl.build(:user, email: '')
 end
 
 Then(/^I should see an e\-mail required message$/) do
-  pending # express the regexp above with the code you wish you had
+  find('.user_email').should have_content("can't be blank")
 end
 
 When(/^I forget to enter a password$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in_user_form FactoryGirl.build(:user, password: '')
 end
 
 Then(/^I should see a password required message$/) do
-  pending # express the regexp above with the code you wish you had
+  find('.user_password').should have_content("can't be blank")
 end
 
 When(/^I forget to enter a password confirmation$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in_user_form FactoryGirl.build(:user, password_confirmation: '')
 end
 
 Then(/^I should see a password confirmation required message$/) do
-  pending # express the regexp above with the code you wish you had
+  find('.user_password_confirmation').should have_content("can't be blank")
 end
 
 When(/^I enter a mismatched password confirmation$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in_user_form FactoryGirl.build(:user, password: 'password1', password_confirmation: 'password2')
 end
 
 Then(/^I should see a mismatched password message$/) do
@@ -77,19 +78,20 @@ end
 
 
 Given(/^another user exists$/) do
-  pending # express the regexp above with the code you wish you had
+  @user = FactoryGirl.create(:user)
 end
 
 When(/^I edit the user with valid data$/) do
-  pending # express the regexp above with the code you wish you had
+  visit edit_user_path(@user)
+  fill_in_user_form(@user, false)
 end
 
 Then(/^I should see a successful user updated message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "Successfully updated user"
 end
 
 Then(/^I should be on the edit page for the user$/) do
-  pending # express the regexp above with the code you wish you had
+  current_path.should == edit_user_path(@user)
 end
 
 When(/^I edit the user with an invalid e\-mail$/) do
