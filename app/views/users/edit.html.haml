@@ -1,2 +1,14 @@
-%h1 Users#edit
-%p Find me in app/views/users/edit.html.haml
+.page-header
+  = title('Edit User', @user.display_name)
+
+= simple_form_for(@user, url: user_path(@user), html: { method: :put, class: 'form form-horizontal' }) do |f|
+
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :email
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to "Cancel", users_path, class: 'btn'

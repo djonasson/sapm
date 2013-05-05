@@ -1,0 +1,16 @@
+.page-header
+  = title('Sign in')
+
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form form-horizontal' } ) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email, as: :email, autofocus: true, required: true
+    = f.input :password, required: true
+    - if devise_mapping.rememberable?
+      = f.input :remember_me, label: false, as: :boolean, inline_label: 'Remember me'
+
+  .form-actions
+    = f.button :submit, "Sign in", class: 'btn-primary'
+
+= render "devise/shared/links"

@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
+  before_filter :load_user, only: [:show, :edit, :update, :destroy]
+
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
@@ -15,18 +17,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to edit_user_path(@user)
+      redirect_to edit_user_path(@user), notice: "Successfully created user."
     else
       render :new
     end
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find params[:id]
     if @user.update_attributes(params[:user])
       redirect_to edit_user_path(@user), notice: "Successfully updated user."
     else
@@ -35,10 +35,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    redirect_to(users_path, alert: "User not found") and return if user.nil?
-    user.destroy
+    redirect_to(users_path, alert: "User not found") and return if @user.nil?
+    @user.destroy
     redirect_to(users_path, notice: "Successfully deleted user")
+  end
+
+
+  private
+
+  def load_user
+    @user = User.find params[:id]
   end
 
 end

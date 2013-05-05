@@ -33,6 +33,8 @@ gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 gem 'simple_form'
 gem 'tabulous'
 

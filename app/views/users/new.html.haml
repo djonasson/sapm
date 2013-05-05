@@ -1,8 +1,15 @@
 .page-header
   = title('New User')
 
-= simple_form_for @user do |f|
-  = f.input :email
-  = f.input :password
-  = f.input :name
-  = f.button :submit
+= simple_form_for(@user, url: users_path, html: { method: :post, class: 'form form-horizontal' }) do |f|
+
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :email
+    = f.input :password
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
+    = link_to "Cancel", users_path, class: 'btn'

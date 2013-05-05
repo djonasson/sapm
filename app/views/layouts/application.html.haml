@@ -2,7 +2,7 @@
 
 %head= render 'layouts/partials/head'
 
-%body
+%body{ class: "#{controller_name} #{action_name}" }
 
   // Render the header, navigation and any other mark-up
   = render 'layouts/partials/header'
