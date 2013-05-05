@@ -8,6 +8,9 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+# Requires test support files shared between cucumber and rspec
+Dir[Rails.root.join("test_support/**/*.rb")].each { |f| require f }
+
 RSpec.configure do |config|
   # ## Mock Framework
   #

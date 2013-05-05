@@ -1,13 +1,17 @@
 Given(/^I'm logged in as an administrator$/) do
-  @administator = FactoryGirl.create(:administrator)
+  sign_in_as_administrator
 end
 
 Given(/^I'm on the new user page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit new_user_path
 end
 
 When(/^I enter valid user data$/) do
-  pending # express the regexp above with the code you wish you had
+  user = FactoryGirl.build(:user)
+  fill_in "user_email", with: user.email
+  fill_in "user_password", with: user.password
+  fill_in "user_name", with: user.name
+  click_on "Create User"
 end
 
 Then(/^I should see a successful user creation message$/) do
@@ -66,6 +70,12 @@ Then(/^I should see a mismatched password message$/) do
   pending # express the regexp above with the code you wish you had
 end
 
+
+# =============================================================================
+# edit.feature
+# =============================================================================
+
+
 Given(/^another user exists$/) do
   pending # express the regexp above with the code you wish you had
 end
@@ -109,6 +119,9 @@ end
 Then(/^I should not see a password confirmation field$/) do
   pending # express the regexp above with the code you wish you had
 end
+
+
+
 
 Given(/^I exist as a user$/) do
   pending # express the regexp above with the code you wish you had

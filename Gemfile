@@ -50,6 +50,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'cucumber-rails'
   gem 'database_cleaner'
+  gem 'launchy'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'spork'

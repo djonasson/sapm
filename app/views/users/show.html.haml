@@ -1,0 +1,55 @@
+.page-header
+
+  .btn-group.pull-right
+    = link_to 'Edit User', edit_user_path(@user), class: "btn btn-primary"
+    %a{ href: '#', class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } }
+      %span.caret
+    %ul.dropdown-menu
+      %li= link_to 'Edit User', edit_user_path(@user)
+      %li= link_to 'Delete User', user_path(@user), method: :delete, confirm: 'Are you sure that you want to permanently delete this user?'
+
+  = title(@user.display_name)
+
+%h3 Account information
+%dl.dl-horizontal
+  %dt Name
+  %dd= @user.name
+  %dt E-mail
+  %dd= @user.email
+
+%h3 Details
+%dl.dl-horizontal
+  %dt Reset Password Token
+  %dd= @user.reset_password_token
+  %dt Reset Password Sent at
+  %dd= l(@user.reset_password_sent_at) rescue ''
+  %dt Remember Created at
+  %dd= l(@user.remember_created_at) rescue ''
+  %dt Sign in Count
+  %dd= @user.sign_in_count
+  %dt Current Sign in at
+  %dd= l(@user.current_sign_in_at) rescue ''
+  %dt Last Sign in at
+  %dd= l(@user.last_sign_in_at) rescue ''
+  %dt Current Sign in IP
+  %dd= @user.current_sign_in_ip
+  %dt Last Sign in IP
+  %dd= @user.last_sign_in_ip
+  %dt Confirmation Token
+  %dd= @user.confirmation_token
+  %dt Confirmed at
+  %dd= l(@user.confirmed_at) rescue ''
+  %dt Confirmation Sent at
+  %dd= l(@user.confirmation_sent_at) rescue ''
+  %dt Unconfirmed E-mail
+  %dd= @user.unconfirmed_email
+  %dt Failed Attempts
+  %dd= @user.failed_attempts
+  %dt Unlock Token
+  %dd= @user.unlock_token
+  %dt Locked at
+  %dd= l(@user.locked_at) rescue ''
+  %dt Created at
+  %dd= l(@user.created_at) rescue ''
+  %dt Updated at
+  %dd= l(@user.updated_at) rescue ''

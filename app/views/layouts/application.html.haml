@@ -16,6 +16,7 @@
       // This will yield the current view
       = yield
 
-  %footer
-    // Render the footer
-    = render 'layouts/partials/footer'
+  - if false #user_signed_in?
+    %footer
+      // Render the footer
+      = render 'layouts/partials/footer'
