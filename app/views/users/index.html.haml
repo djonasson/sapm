@@ -1,7 +1,9 @@
 .page-header
 
   .btn-group.pull-right
-    = link_to 'New User', new_user_path, class: "btn btn-primary"
+    %a.btn.btn-primary{ href: new_user_path }
+      %i.icon-user.icon-white
+      New User
 
   = title('Users', 'Subtext for header')
 
@@ -19,10 +21,10 @@
         %td= link_to user.name, user_path(user)
         %td= link_to user.email, user_path(user)
         %td
-          = link_to 'Show', user_path(user)
-          |
-          = link_to 'Edit', edit_user_path(user)
-          |
-          = link_to 'Delete User', user_path(user), method: :delete, confirm: 'Are you sure that you want to permanently delete this user?'
+          .btn-toolbarz
+            .btn-groupz
+              = link_to 'Show', user_path(user), class: 'btn btn-small btn-primary'
+              = link_to 'Edit', edit_user_path(user), class: 'btn btn-small btn-warning'
+              = link_to 'Delete User', user_path(user), method: :delete, confirm: 'Are you sure that you want to permanently delete this user?', class: 'btn btn-small btn-danger'
 
 = paginate @users

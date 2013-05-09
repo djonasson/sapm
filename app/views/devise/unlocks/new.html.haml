@@ -6,7 +6,10 @@
   = f.full_error :unlock_token
 
   .form-inputs
-    = f.input :email, required: true, autofocus: true
+    = f.input :email, required: true, as: :email, wrapper: :append do
+      = f.input_field :email, autofocus: true
+      %span.add-on>
+        %i.icon-envelope
 
   .form-actions
     = f.button :submit, 'Resend unlock instructions', class: 'btn-primary'

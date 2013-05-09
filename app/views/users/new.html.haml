@@ -6,9 +6,20 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :email
-    = f.input :password
+    = f.input :name, as: :string, wrapper: :append do
+      = f.input_field :name, autofocus: true
+      %span.add-on>
+        %i.icon-user
+
+    = f.input :email, required: true, as: :email, wrapper: :append do
+      = f.input_field :email
+      %span.add-on>
+        %i.icon-envelope
+
+    = f.input :password, required: true, as: :password, wrapper: :append do
+      = f.input_field :password
+      %span.add-on>
+        %i.icon-lock
 
   .form-actions
     = f.button :submit, class: 'btn btn-primary'
