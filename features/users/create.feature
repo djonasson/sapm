@@ -21,15 +21,3 @@ Feature: Create user
   Scenario: No e-mail
     When I forget to enter an e-mail
     Then I should see an e-mail required message
-
-  Scenario: No password
-    When I forget to enter a password
-    Then I should see a password required message
-
-  Scenario: No password confirmation
-    When I forget to enter a password confirmation
-    Then I should see a password confirmation required message
-
-  Scenario: Mismatched password and password confirmation
-    When I enter a mismatched password confirmation
-    Then I should see a mismatched password message

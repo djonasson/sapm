@@ -1,0 +1,26 @@
+.page-header
+  = title('Account Activation', resource.email)
+
+= simple_form_for(resource, as: resource_name, url: update_user_confirmation_path, html: { method: :put, class: 'form form-horizontal' }) do |f|
+  = f.error_notification
+
+  .form-inputs
+
+    = hidden_field_tag :confirmation_token, @confirmation_token
+
+    - if @requires_password
+
+      = f.input :password, required: true, as: :password, wrapper: :append do
+        = f.input_field :password
+        %span.add-on>
+          %i.icon-lock
+
+      = f.input :password_confirmation, required: true, as: :password, wrapper: :append do
+        = f.input_field :password_confirmation
+        %span.add-on>
+          %i.icon-lock
+
+  .form-actions
+    = f.button :submit, 'Activate', class: 'btn-primary'
+
+= render "devise/shared/links"

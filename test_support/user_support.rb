@@ -10,3 +10,12 @@ def sign_in_as_administrator
   administrator.confirm!
   sign_in administrator
 end
+
+def set_user_from_name(name)
+  user = FactoryGirl.create(:user, name: name)
+  instance_variable_set("@#{name.downcase}", user)
+end
+
+def get_user_from_name(name)
+  instance_variable_get("@#{name.downcase}")
+end
