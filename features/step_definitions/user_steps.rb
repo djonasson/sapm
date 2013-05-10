@@ -5,6 +5,7 @@ def fill_in_user_form(user, new=true)
   click_on button_name
 end
 
+
 Given(/^I'm logged in as an administrator$/) do
   sign_in_as_administrator
 end
@@ -46,11 +47,6 @@ Then(/^I should see an e\-mail required message$/) do
   find('.user_email').should have_content("can't be blank")
 end
 
-
-
-# =============================================================================
-# edit.feature
-# =============================================================================
 
 
 Given(/^a user called (\w+) exists$/) do |name|
@@ -106,83 +102,110 @@ end
 
 
 
-
 Given(/^I exist as a user$/) do
-  pending # express the regexp above with the code you wish you had
+  @i = FactoryGirl.create(:user)
 end
 
 Given(/^My account has been confirmed$/) do
-  pending # express the regexp above with the code you wish you had
+  @i.confirm!
 end
 
 Given(/^I am not logged in$/) do
-  pending # express the regexp above with the code you wish you had
+  visit destroy_user_session_path
+  visit root_path
 end
 
 When(/^I sign in with valid credentials$/) do
-  pending # express the regexp above with the code you wish you had
+  visit new_user_session_path
+  within('form#new_user') do
+    fill_in "user_email", with: @i.email
+    fill_in "user_password", with: @i.password
+    click_on "Sign in"
+  end
 end
 
 Then(/^I see a successful sign in message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content 'Signed in successfully'
 end
 
 When(/^I return to the site$/) do
-  pending # express the regexp above with the code you wish you had
+  visit root_url
 end
 
 Then(/^I should be signed in$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content 'Sign out'
 end
 
 Given(/^I do not exist as a user$/) do
-  pending # express the regexp above with the code you wish you had
+  @i = FactoryGirl.build(:user)
 end
 
 Then(/^I see an invalid login message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content 'Invalid e-mail or password'
 end
 
 Then(/^I should be signed out$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content 'Sign in'
 end
 
 Given(/^My account has not been confirmed$/) do
-  pending # express the regexp above with the code you wish you had
+  @i.should_not be_confirmed
 end
 
 Then(/^I should see an unconfirmed account message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content 'You have to confirm your account before continuing'
 end
 
 When(/^I sign in with no e\-mail$/) do
-  pending # express the regexp above with the code you wish you had
+  visit new_user_session_path
+  within('form#new_user') do
+    fill_in "user_password", with: @i.password
+    click_on "Sign in"
+  end
 end
 
 Then(/^I see a missing e\-mail message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content 'Invalid e-mail or password'
 end
 
 When(/^I sign in with no password$/) do
-  pending # express the regexp above with the code you wish you had
+  visit new_user_session_path
+  within('form#new_user') do
+    fill_in "user_email", with: @i.email
+    click_on "Sign in"
+  end
 end
 
 Then(/^I see a missing password message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content 'Invalid e-mail or password'
 end
 
 When(/^I sign in with a wrong password$/) do
-  pending # express the regexp above with the code you wish you had
+  visit new_user_session_path
+  within('form#new_user') do
+    fill_in "user_email", with: @i.email
+    fill_in "user_password", with: @i.password + 'a'
+    click_on "Sign in"
+  end
 end
 
+
+
 Given(/^I am logged in$/) do
-  pending # express the regexp above with the code you wish you had
+  @i = FactoryGirl.create(:user)
+  @i.confirm!
+  visit new_user_session_path
+  within('form#new_user') do
+    fill_in "user_email", with: @i.email
+    fill_in "user_password", with: @i.password
+    click_on "Sign in"
+  end
 end
 
 When(/^I sign out$/) do
-  pending # express the regexp above with the code you wish you had
+  click_on "Sign out"
 end
 
 Then(/^I should see a signed out message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content 'Sign in'
 end

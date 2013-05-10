@@ -19,12 +19,12 @@
             %li.divider
             %li= link_to(t('.my_account', default: 'My Account'), '#')#TODO: :edit_user_registration)
             %li.divider
-            %li= link_to(t('.sign_out', default: 'Sign-out'), :destroy_user_session, method: 'delete')
+            %li= link_to(t('.sign_out', default: 'Sign out'), :destroy_user_session, method: 'delete')
       - else
         .pull-right
           %ul.nav
-            %li= link_to(t('.sign_in', default: 'Sign-in'), :new_user_session)
-            -#%li= link_to(t('.sign_up', default: 'Sign-up'), '#') #TODO:new_user_registration_path)
+            %li= link_to(t('.sign_in', default: 'Sign in'), :new_user_session)
+            -#%li= link_to(t('.sign_up', default: 'Sign up'), '#') #TODO:new_user_registration_path)
 
       - if user_signed_in?
         .nav-collapse

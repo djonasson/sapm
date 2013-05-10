@@ -16,12 +16,10 @@ Feature: Edit user
   Scenario: Invalid e-mail
     When I edit Daniel with an invalid e-mail
     Then I should see an invalid e-mail message
-    And I should be on the edit page for Daniel
 
   Scenario: No e-mail
     When I edit Daniel forgetting an e-mail
     Then I should see an e-mail required message
-    And I should be on the edit page for Daniel
 
   Scenario: E-mail changed
     When I edit Daniel changing e-mail
