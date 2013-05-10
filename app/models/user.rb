@@ -16,4 +16,36 @@ class User < ActiveRecord::Base
   def administrator?
     true
   end
+
+  # Set the password without knowing the current password used in our
+  # confirmation controller.
+  def attempt_set_password(params)
+    update_attributes({
+      password: params[:password],
+      password_confirmation: params[:password_confirmation]
+    })
+  end
+
+  # Return whether a password has been set
+  def has_no_password?
+    encrypted_password.blank?
+  end
+
+  # Provide access to protected method unless_confirmed
+  def only_if_unconfirmed
+    pending_any_confirmation { yield }
+  end
+
+
+  protected
+
+  def password_required?
+    # Password is required if it is being set, but not for new records
+    if persisted?
+      password.present? || password_confirmation.present?
+    else
+      false
+    end
+  end
+
 end

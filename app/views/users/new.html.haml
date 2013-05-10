@@ -16,11 +16,6 @@
       %span.add-on>
         %i.icon-envelope
 
-    = f.input :password, required: true, as: :password, wrapper: :append do
-      = f.input_field :password
-      %span.add-on>
-        %i.icon-lock
-
   .form-actions
     = f.button :submit, class: 'btn btn-primary'
     = link_to "Cancel", users_path, class: 'btn'

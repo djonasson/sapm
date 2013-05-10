@@ -1,11 +1,9 @@
 def fill_in_user_form(user, new=true)
   fill_in "user_email", with: user.email
-  fill_in "user_password", with: user.password if new
   fill_in "user_name", with: user.name
   button_name = new ? "Create User" : "Update User"
   click_on button_name
 end
-
 
 Given(/^I'm logged in as an administrator$/) do
   sign_in_as_administrator
@@ -28,7 +26,8 @@ Then(/^I should be on the edit page for the newly created user$/) do
 end
 
 Then(/^a confirmation e\-mail should have been sent to the user$/) do
-  pending # express the regexp above with the code you wish you had
+  assert ! ActionMailer::Base.deliveries.empty?
+  ActionMailer::Base.deliveries.last.subject.should == 'Confirmation instructions'
 end
 
 When(/^I enter an invalid e\-mail$/) do
@@ -47,29 +46,6 @@ Then(/^I should see an e\-mail required message$/) do
   find('.user_email').should have_content("can't be blank")
 end
 
-When(/^I forget to enter a password$/) do
-  fill_in_user_form FactoryGirl.build(:user, password: '')
-end
-
-Then(/^I should see a password required message$/) do
-  find('.user_password').should have_content("can't be blank")
-end
-
-When(/^I forget to enter a password confirmation$/) do
-  fill_in_user_form FactoryGirl.build(:user, password_confirmation: '')
-end
-
-Then(/^I should see a password confirmation required message$/) do
-  find('.user_password_confirmation').should have_content("can't be blank")
-end
-
-When(/^I enter a mismatched password confirmation$/) do
-  fill_in_user_form FactoryGirl.build(:user, password: 'password1', password_confirmation: 'password2')
-end
-
-Then(/^I should see a mismatched password message$/) do
-  pending # express the regexp above with the code you wish you had
-end
 
 
 # =============================================================================
