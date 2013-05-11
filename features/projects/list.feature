@@ -12,3 +12,6 @@ Feature: List Projects
   Scenario: Project's details in list
     Then I should see the name of the project Guadeo
 
+  Scenario: Project's show page
+    When I click on the show button for project Guadeo
+    Then I should be on the show page for project Guadeo

@@ -16,7 +16,7 @@
       %th Actions
   %tbody
     - @users.each do |user|
-      %tr
+      %tr[user]
         %td= link_to user.id, admin_user_path(user)
         %td
           = link_to user.name, admin_user_path(user)

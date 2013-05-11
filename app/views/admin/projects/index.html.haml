@@ -2,7 +2,7 @@
 
   .btn-group.pull-right
     %a.btn.btn-primary{ href: new_admin_project_path }
-      %i.icon-project.icon-white
+      %i.icon-folder-close.icon-white
       New Project
 
   = title('Projects')
@@ -15,7 +15,7 @@
       %th Actions
   %tbody
     - @projects.each do |project|
-      %tr
+      %tr[project]
         %td= link_to project.id, admin_project_path(project)
         %td= link_to project.name, admin_project_path(project)
         %td

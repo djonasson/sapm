@@ -61,3 +61,14 @@ Then(/^I should see the name of the project (\w+)$/) do |name|
   project = get_project_from_name(name)
   page.should have_content project.name
 end
+
+When(/^I click on the show button for project (\w+)$/) do |name|
+  project = get_project_from_name(name)
+  within("#project_#{project.id}") { click_on "Show" }
+end
+
+Then(/^I should be on the show page for project (\w+)$/) do |name|
+  project = get_project_from_name(name)
+  current_path.should == admin_project_path(project)
+end
+
