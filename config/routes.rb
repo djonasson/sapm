@@ -1,7 +1,7 @@
 Sapm::Application.routes.draw do
 
   as :user do
-    put '/account_confirmation' => 'confirmations#update', as: :update_user_confirmation
+    put '/users/confirmation' => 'confirmations#update', as: :update_user_confirmation
   end
   devise_for :users, controllers: { confirmations: "confirmations" }
   # devise_for :users

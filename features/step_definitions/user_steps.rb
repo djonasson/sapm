@@ -209,3 +209,44 @@ end
 Then(/^I should see a signed out message$/) do
   page.should have_content 'Sign in'
 end
+
+
+
+Given(/^I'm on the activate account page$/) do
+  @i.update_attribute(:encrypted_password, '')
+  visit user_confirmation_path confirmation_token: @i.confirmation_token
+end
+
+When(/^I choose a valid password$/) do
+  fill_in "user_password", with: 'password'
+  fill_in "user_password_confirmation", with: 'password'
+  click_on "Activate"
+end
+
+Then(/^I should see an account confirmed message$/) do
+  page.should have_content 'Your account was successfully confirmed'
+end
+
+When(/^I give no password$/) do
+  fill_in "user_password_confirmation", with: 'password'
+  click_on "Activate"
+end
+
+When(/^I give no password confirmation$/) do
+  fill_in "user_password", with: 'password'
+  click_on "Activate"
+end
+
+When(/^I give non\-matching password and password confirmation$/) do
+  fill_in "user_password", with: 'password1'
+  fill_in "user_password_confirmation", with: 'password2'
+  click_on "Activate"
+end
+
+Then(/^I see a password can't be blank message$/) do
+  page.should have_content "Password can't be blank"
+end
+
+Then(/^I see a passwords don't match message$/) do
+  page.should have_content "Password doesn't match confirmation"
+end
