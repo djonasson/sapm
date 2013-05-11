@@ -37,7 +37,6 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'simple_form'
-gem 'tabulous'
 
 group :development do
   gem 'thin'
