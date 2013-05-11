@@ -1,0 +1,27 @@
+.page-header
+
+  = title(@user.display_name, 'My Profile')
+
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active= link_to 'Overview', '#tab1', data: { toggle: 'tab' }
+    %li= link_to 'Projects', '#tab2', data: { toggle: 'tab' }
+  .tab-content
+
+    .tab-pane.active#tab1
+      %dl.dl-horizontal
+        %dt Name
+        %dd= display @user.name
+
+        %dt E-mail
+        %dd= display @user.email
+
+        %dt Administrator
+        %dd
+          - if @user.administrator
+            %i.icon-ok
+          - else
+            No
+
+    .tab-pane#tab2
+      %p Tab 2

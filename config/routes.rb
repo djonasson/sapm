@@ -12,6 +12,9 @@ Sapm::Application.routes.draw do
     resources :users
   end
 
+  resource :profile, only: [:show]
+
+
   get "dashboard/index"
 
   root to: 'dashboard#index'

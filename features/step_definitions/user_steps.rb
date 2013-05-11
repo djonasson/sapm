@@ -259,7 +259,7 @@ end
 
 Then(/^I should see the name of the user (\w+)$/) do |name|
   user = get_user_from_name(name)
-  page.should have_content user.name
+  page.should have_content user.display_name
 end
 
 Then(/^I should see the e\-mail of the user (\w+)$/) do |name|
@@ -267,3 +267,14 @@ Then(/^I should see the e\-mail of the user (\w+)$/) do |name|
   page.should have_content user.email
 end
 
+
+
+Given(/^I'm logged in as the user (\w+)$/) do |name|
+  user = set_user_from_name(name)
+  user.confirm!
+  sign_in user
+end
+
+Given(/^I'm on the profile page$/) do
+  visit profile_path
+end
