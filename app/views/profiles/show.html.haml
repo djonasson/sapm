@@ -8,7 +8,7 @@
     %li= link_to 'Projects', '#tab2', data: { toggle: 'tab' }
   .tab-content
 
-    .tab-pane.active#tab1
+    .tab-pane.fade.in.active#tab1
       %dl.dl-horizontal
         %dt Name
         %dd= display @user.name
@@ -23,5 +23,5 @@
           - else
             No
 
-    .tab-pane#tab2
-      %p Tab 2
+    .tab-pane.fade.in#tab2
+      %p TODO:
