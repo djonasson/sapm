@@ -250,3 +250,20 @@ end
 Then(/^I see a passwords don't match message$/) do
   page.should have_content "Password doesn't match confirmation"
 end
+
+
+
+Given(/^I'm on the users list page$/) do
+  visit admin_users_path
+end
+
+Then(/^I should see the name of the user (\w+)$/) do |name|
+  user = get_user_from_name(name)
+  page.should have_content user.name
+end
+
+Then(/^I should see the e\-mail of the user (\w+)$/) do |name|
+  user = get_user_from_name(name)
+  page.should have_content user.email
+end
+

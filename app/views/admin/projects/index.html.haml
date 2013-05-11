@@ -1,0 +1,29 @@
+.page-header
+
+  .btn-group.pull-right
+    %a.btn.btn-primary{ href: new_admin_project_path }
+      %i.icon-project.icon-white
+      New Project
+
+  = title('Projects')
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th Actions
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= link_to project.id, admin_project_path(project)
+        %td= link_to project.name, admin_project_path(project)
+        %td
+          .btn-toolbarz
+            .btn-groupz
+              = link_to 'Show', admin_project_path(project), class: 'btn btn-small btn-primary'
+              = link_to 'Edit', edit_admin_project_path(project), class: 'btn btn-small btn-warning'
+              = link_to 'Delete project', admin_project_path(project), method: :delete, confirm: 'Are you sure that you want to permanently delete this project?', class: 'btn btn-small btn-danger'
+
+= paginate @projects
+

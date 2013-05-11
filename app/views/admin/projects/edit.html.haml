@@ -1,0 +1,28 @@
+.page-header
+
+  .btn-group.pull-right
+    %a.btn.btn-primary{ href: admin_project_path(@project) }
+      %i.icon-project.icon-white
+      Show project
+    %a{ href: '#', class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } }
+      %span.caret
+    %ul.dropdown-menu
+      %li= link_to 'Edit project', admin_project_path(@project)
+      %li= link_to 'Delete project', admin_project_path(@project), method: :delete, confirm: 'Are you sure that you want to permanently delete this project?'
+
+  = title(@project.display_name, 'Editing project')
+
+= simple_form_for(@project, url: admin_project_path(@project), html: { method: :put, class: 'form form-horizontal' }) do |f|
+
+  = f.error_notification
+
+  .form-inputs
+
+    = f.input :name, as: :string, wrapper: :append do
+      = f.input_field :name, autofocus: true
+      %span.add-on>
+        %i.icon-folder-close
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to 'Cancel', admin_projects_path, class: 'btn'

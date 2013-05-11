@@ -8,6 +8,7 @@ Sapm::Application.routes.draw do
   end
 
   namespace :admin do
+    resources :projects
     resources :users
   end
 

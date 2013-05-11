@@ -16,44 +16,68 @@
 .well
   %dl.dl-horizontal
     %dt Name
-    %dd= @user.name
+    %dd= display @user.name
+
     %dt E-mail
-    %dd= @user.email
+    %dd= display @user.email
+
+    %dt Administrator
+    %dd
+      - if @user.administrator
+        %i.icon-ok
+      - else
+        No
 
 %h2 Details
 .well.well-small
   %dl.dl-horizontal
     %dt Reset Password Token
-    %dd= @user.reset_password_token
+    %dd= display @user.reset_password_token
+
     %dt Reset Password Sent at
-    %dd= l(@user.reset_password_sent_at) rescue ''
+    %dd= display @user.reset_password_sent_at
+
     %dt Remember Created at
-    %dd= l(@user.remember_created_at) rescue ''
+    %dd= display @user.remember_created_at
+
     %dt Sign in Count
-    %dd= @user.sign_in_count
+    %dd= display @user.sign_in_count
+
     %dt Current Sign in at
-    %dd= l(@user.current_sign_in_at) rescue ''
+    %dd= display @user.current_sign_in_at
+
     %dt Last Sign in at
-    %dd= l(@user.last_sign_in_at) rescue ''
+    %dd= display @user.last_sign_in_at
+
     %dt Current Sign in IP
-    %dd= @user.current_sign_in_ip
+    %dd= display @user.current_sign_in_ip
+
     %dt Last Sign in IP
-    %dd= @user.last_sign_in_ip
+    %dd= display @user.last_sign_in_ip
+
     %dt Confirmation Token
-    %dd= @user.confirmation_token
+    %dd= display @user.confirmation_token
+
     %dt Confirmed at
-    %dd= l(@user.confirmed_at) rescue ''
+    %dd= display @user.confirmed_at
+
     %dt Confirmation Sent at
-    %dd= l(@user.confirmation_sent_at) rescue ''
+    %dd= display @user.confirmation_sent_at
+
     %dt Unconfirmed E-mail
-    %dd= @user.unconfirmed_email
+    %dd= display @user.unconfirmed_email
+
     %dt Failed Attempts
-    %dd= @user.failed_attempts
+    %dd= display @user.failed_attempts
+
     %dt Unlock Token
-    %dd= @user.unlock_token
+    %dd= display @user.unlock_token
+
     %dt Locked at
-    %dd= l(@user.locked_at) rescue ''
+    %dd= display @user.locked_at
+
     %dt Created at
-    %dd= l(@user.created_at) rescue ''
+    %dd= display @user.created_at
+
     %dt Updated at
-    %dd= l(@user.updated_at) rescue ''
+    %dd= display @user.updated_at

@@ -13,4 +13,9 @@ module ApplicationHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
+
+  def display(value, empty_value = '-')
+    result = value.presence || empty_value
+    result.is_a?(Time) ? l(result) : result
+  end
 end

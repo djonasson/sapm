@@ -1,0 +1,16 @@
+.page-header
+  = title('New Project')
+
+= simple_form_for(@project, url: admin_projects_path, html: { method: :post, class: 'form form-horizontal' }) do |f|
+
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, as: :string, wrapper: :append do
+      = f.input_field :name, autofocus: true
+      %span.add-on>
+        %i.icon-folder-close
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
+    = link_to "Cancel", admin_projects_path, class: 'btn'

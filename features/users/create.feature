@@ -1,4 +1,4 @@
-Feature: Create user
+Feature: Create User
 
   In order to assign people to projects
   As an administrator

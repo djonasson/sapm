@@ -13,9 +13,9 @@ end
 
 def set_user_from_name(name)
   user = FactoryGirl.create(:user, name: name)
-  instance_variable_set("@#{name.downcase}", user)
+  instance_variable_set("@user_#{name.downcase}", user)
 end
 
 def get_user_from_name(name)
-  instance_variable_get("@#{name.downcase}")
+  instance_variable_get("@user_#{name.downcase}")
 end
