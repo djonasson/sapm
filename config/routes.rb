@@ -1,16 +1,19 @@
 Sapm::Application.routes.draw do
 
+  # devise_for :users
+  # devise_for :users, controllers: { registrations: "registrations", sessions: "sessions", passwords: "passwords", confirmations: "confirmations", invitations: 'users' }
+  devise_for :users, controllers: { confirmations: "confirmations" }
   as :user do
     put '/users/confirmation' => 'confirmations#update', as: :update_user_confirmation
   end
-  devise_for :users, controllers: { confirmations: "confirmations" }
-  # devise_for :users
-  # devise_for :users, controllers: { registrations: "registrations", sessions: "sessions", passwords: "passwords", confirmations: "confirmations", invitations: 'users' }
 
-  resources :users
+  namespace :admin do
+    resources :users
+  end
 
-  get "home/index"
-  root to: 'home#index'
+  get "dashboard/index"
+
+  root to: 'dashboard#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

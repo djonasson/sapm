@@ -1,14 +1,14 @@
 .page-header
 
   .btn-group.pull-right
-    %a.btn.btn-primary{ href: edit_user_path(@user) }
+    %a.btn.btn-primary{ href: edit_admin_user_path(@user) }
       %i.icon-user.icon-white
       Edit User
     %a{ href: '#', class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } }
       %span.caret
     %ul.dropdown-menu
-      %li= link_to 'Edit User', edit_user_path(@user)
-      %li= link_to 'Delete User', user_path(@user), method: :delete, confirm: 'Are you sure that you want to permanently delete this user?'
+      %li= link_to 'Edit User', edit_admin_user_path(@user)
+      %li= link_to 'Delete User', admin_user_path(@user), method: :delete, confirm: 'Are you sure that you want to permanently delete this user?'
 
   = title(@user.display_name, 'Showing User')
 

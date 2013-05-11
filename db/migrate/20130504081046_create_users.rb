@@ -2,6 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :name
+      t.boolean :administrator, null: false, default: false
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

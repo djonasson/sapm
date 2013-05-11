@@ -1,0 +1,34 @@
+.page-header
+
+  .btn-group.pull-right
+    %a.btn.btn-primary{ href: new_admin_user_path }
+      %i.icon-user.icon-white
+      New User
+
+  = title('Users', 'Subtext for header')
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th E-mail
+      %th Actions
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user.id, admin_user_path(user)
+        %td
+          = link_to user.name, admin_user_path(user)
+          - if user.administrator?
+            %i.icon-eye-open
+        %td= link_to user.email, admin_user_path(user)
+        %td
+          .btn-toolbarz
+            .btn-groupz
+              = link_to 'Show', admin_user_path(user), class: 'btn btn-small btn-primary'
+              = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-small btn-warning'
+              - unless user.administrator?
+                = link_to 'Delete User', admin_user_path(user), method: :delete, confirm: 'Are you sure that you want to permanently delete this user?', class: 'btn btn-small btn-danger'
+
+= paginate @users

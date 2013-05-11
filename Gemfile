@@ -30,6 +30,7 @@ end
 # gem 'debugger'
 
 gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'cancan'
 gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'

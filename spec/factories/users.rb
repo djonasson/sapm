@@ -6,8 +6,9 @@ FactoryGirl.define do
   end
 
   factory :administrator, class: User do
-    email "administrator@example.com"
-    name "Administrator Name"
+    sequence(:email) { |i| "administrator#{i}@example.com" }
+    sequence(:name) { |i| "Administrator #{i}" }
+    administrator true
     password "mysecretpass"
   end
 end

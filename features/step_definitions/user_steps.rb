@@ -11,7 +11,7 @@ Given(/^I'm logged in as an administrator$/) do
 end
 
 Given(/^I'm on the new user page$/) do
-  visit new_user_path
+  visit new_admin_user_path
 end
 
 When(/^I enter valid user data$/) do
@@ -23,7 +23,7 @@ Then(/^I should see a successful user creation message$/) do
 end
 
 Then(/^I should be on the edit page for the newly created user$/) do
-  current_path.should == edit_user_path(User.last)
+  current_path.should == edit_admin_user_path(User.last)
 end
 
 Then(/^a confirmation e\-mail should have been sent to (\w+)/) do |name|
@@ -55,7 +55,7 @@ end
 
 When(/^I edit (\w+) with valid data$/) do |name|
   user = get_user_from_name(name)
-  visit edit_user_path(user)
+  visit edit_admin_user_path(user)
   fill_in_user_form(user, false)
 end
 
@@ -64,32 +64,32 @@ Then(/^I should see a successful user updated message$/) do
 end
 
 Then(/^I should be on the edit page for (\w+)$/) do |name|
-  current_path.should == edit_user_path(get_user_from_name(name))
+  current_path.should == edit_admin_user_path(get_user_from_name(name))
 end
 
 When(/^I edit (\w+) with an invalid e\-mail$/) do |name|
   user = get_user_from_name(name)
-  visit edit_user_path(user)
+  visit edit_admin_user_path(user)
   user.email = 'invalid'
   fill_in_user_form(user, false)
 end
 
 When(/^I edit (\w+) forgetting an e\-mail$/) do |name|
   user = get_user_from_name(name)
-  visit edit_user_path(user)
+  visit edit_admin_user_path(user)
   user.email = ''
   fill_in_user_form(user, false)
 end
 
 When(/^I edit (\w+) changing e\-mail$/) do |name|
   user = get_user_from_name(name)
-  visit edit_user_path(user)
+  visit edit_admin_user_path(user)
   user.email = 'a' + user.email
   fill_in_user_form(user, false)
 end
 
 When(/^I go to the edit page for (\w+)/) do |name|
-  visit edit_user_path(get_user_from_name(name))
+  visit edit_admin_user_path(get_user_from_name(name))
 end
 
 Then(/^I should not see a password field$/) do
@@ -203,7 +203,7 @@ Given(/^I am logged in$/) do
 end
 
 When(/^I sign out$/) do
-  click_on "Sign out"
+  visit destroy_user_session_path
 end
 
 Then(/^I should see a signed out message$/) do

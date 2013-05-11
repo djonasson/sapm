@@ -8,13 +8,14 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation,
     :remember_me
 
+  before_destroy :ensure_not_administrator
 
   def display_name
     name.blank? ? email : name
   end
 
   def administrator?
-    true
+    administrator
   end
 
   # Set the password without knowing the current password used in our
@@ -44,6 +45,13 @@ class User < ActiveRecord::Base
     if persisted?
       password.present? || password_confirmation.present?
     else
+      false
+    end
+  end
+
+  def ensure_not_administrator
+    if administrator?
+      errors.add(:base, "Can't destroy an administrator.")
       false
     end
   end

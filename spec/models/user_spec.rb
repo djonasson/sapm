@@ -1,5 +1,7 @@
 require 'spec_helper'
 
-describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+module Admin
+  describe User do
+    it { should validate_presence_of(:email) }
+  end
 end

@@ -28,7 +28,10 @@
 
       - if user_signed_in?
         .nav-collapse
-          = tabs
+          %ul.nav
+            - if current_user.administrator?
+              %li= link_to 'Users', admin_users_path
+            %li= link_to 'Projects', '#'
 
         -#%form.navbar-search.pull-left
         -#  %input{ type: "text", class: "search-query", placeholder: "Search"}
