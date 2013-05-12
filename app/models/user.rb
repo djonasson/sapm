@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation,
     :remember_me
 
+  has_and_belongs_to_many :projects
+
   before_destroy :ensure_not_administrator
 
   def display_name

@@ -24,4 +24,6 @@
             No
 
     .tab-pane.fade.in#tab2
-      %p TODO:
+      %ul
+        - @user.projects.all.each do |project|
+          %li= link_to project.display_name, project_path(project)

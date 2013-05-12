@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(:version => 20130511120734) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "projects_users", :force => true do |t|
+    t.integer "project_id"
+    t.integer "user_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.boolean  "administrator",          :default => false, :null => false
