@@ -12,6 +12,8 @@ Sapm::Application.routes.draw do
     resources :users
   end
 
+  resources :projects, only: [:index, :show]
+
   resource :profile, only: [:show]
 
 
