@@ -37,6 +37,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'simple_form'
+gem 'simple-navigation'
 
 group :development do
   gem 'thin'
