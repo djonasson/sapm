@@ -1,0 +1,11 @@
+%li.span4[project]
+  .thumbnail
+    .caption
+      %h3= project.name
+      %p
+        .progress
+          .bar.bar-success{ style: "width: 35%;" }
+          .bar.bar-warning{ style: "width: 20%;" }
+          .bar.bar-danger{ style: "width: 10%;" }
+      %p
+        = link_to 'Open Project', project_path(project), class: 'btn btn-primary'
