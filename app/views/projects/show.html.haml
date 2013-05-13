@@ -7,10 +7,72 @@
 
   = title(@project.display_name)
 
-%ul.nav.nav-tabs.nav-stacked
-  %li= link_to 'Category 1', '#'
-  %li= link_to 'Category 2', '#'
-  %li= link_to 'Category 3', '#'
-  %li= link_to 'Category 4', '#'
-  %li= link_to 'Category 5', '#'
-  %li= link_to 'Category 6', '#'
+-#= render @project.categories
+
+%ul.nav.nav-tabs.nav-stacked.sortable
+
+  %li.ui-state-default
+    .btn.btn-link.handle.pull-left
+      %i.icon-resize-vertical
+    = link_to 'Category 1', '#'
+
+    %ul.nav.nav-tabs.nav-stacked.sortable
+
+      %li.ui-state-default
+        .btn.btn-link.handle.pull-left
+          %i.icon-resize-vertical
+        = link_to 'Sub-Category 1', '#'
+
+      %li.ui-state-default
+        .btn.btn-link.handle.pull-left
+          %i.icon-resize-vertical
+        = link_to 'Sub-Category 2', '#'
+
+        %ul.nav.nav-tabs.nav-stacked.sortable
+
+          %li.ui-state-default
+            .btn.btn-link.handle.pull-left
+              %i.icon-resize-vertical
+            = link_to 'Sub Sub-Category 1', '#'
+
+          %li.ui-state-default
+            .btn.btn-link.handle.pull-left
+              %i.icon-resize-vertical
+            = link_to 'Sub Sub-Category 2', '#'
+
+      %li.ui-state-default
+        .btn.btn-link.handle.pull-left
+          %i.icon-resize-vertical
+        = link_to 'Sub-Category 3', '#'
+
+  %li.ui-state-default
+    .btn.btn-link.handle.pull-left
+      %i.icon-resize-vertical
+    = link_to 'Category 2', '#'
+
+  %li.ui-state-default
+    .btn.btn-link.handle.pull-left
+      %i.icon-resize-vertical
+    = link_to 'Category 3', '#'
+
+    %ul.nav.nav-tabs.nav-stacked.sortable
+
+      %li.ui-state-default
+        .btn.btn-link.handle.pull-left
+          %i.icon-resize-vertical
+        = link_to 'Sub-Category 1', '#'
+
+      %li.ui-state-default
+        .btn.btn-link.handle.pull-left
+          %i.icon-resize-vertical
+        = link_to 'Sub-Category 2', '#'
+
+  %li.ui-state-default
+    .btn.btn-link.handle.pull-left
+      %i.icon-resize-vertical
+    = link_to 'Category 4', '#'
+
+  %li.ui-state-default
+    .btn.btn-link.handle.pull-left
+      %i.icon-resize-vertical
+    = link_to 'Category 5', '#'

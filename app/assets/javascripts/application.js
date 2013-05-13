@@ -12,5 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery.ui.all
 //= require bootstrap
+//= require_tree .
+
+
+$(function() {
+  $("ul.sortable").sortable({
+    placeholder: "ui-state-highlight",
+    axis: "y",
+    cursor: "move",
+    delay: 100,
+    handle: ".handle"
+  });
+  $("ul.sortable").disableSelection();
+});
