@@ -9,70 +9,26 @@
 
 -#= render @project.categories
 
-%ul.nav.nav-tabs.nav-stacked.sortable
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 1', '#'
-
-    %ul.nav.nav-tabs.nav-stacked.sortable
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 1', '#'
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 2', '#'
-
-        %ul.nav.nav-tabs.nav-stacked.sortable
-
-          %li.ui-state-default
-            .btn.btn-link.handle.pull-left
-              %i.icon-resize-vertical
-            = link_to 'Sub Sub-Category 1', '#'
-
-          %li.ui-state-default
-            .btn.btn-link.handle.pull-left
-              %i.icon-resize-vertical
-            = link_to 'Sub Sub-Category 2', '#'
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 3', '#'
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 2', '#'
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 3', '#'
-
-    %ul.nav.nav-tabs.nav-stacked.sortable
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 1', '#'
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 2', '#'
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 4', '#'
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 5', '#'
+.category
+  .name
+    %h2 Category 1
+  .body
+    .category
+      .name
+        %h3 Sub Category 1
+      .body
+        .feature
+          .name
+            %strong Create User
+          .description
+            .blockquote
+              %p In order to assign people to projects
+              %p As an administrator
+              %p I want to create a new user
+          .body.well
+            TODO
+    .category
+      .name
+        %h3 Sub Category 2
+      .body
+        TODO

@@ -8,4 +8,8 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.find(params[:id])
   end
 
+  def edit
+    @project = current_user.projects.find(params[:id])
+  end
+
 end
