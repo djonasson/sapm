@@ -29,6 +29,7 @@ end
 # To use debugger
 # gem 'debugger'
 
+gem 'awesome_nested_set'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'cancan'
 gem 'devise'

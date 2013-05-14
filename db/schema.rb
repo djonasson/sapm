@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511120734) do
+ActiveRecord::Schema.define(:version => 20130514135958) do
+
+  create_table "categories", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.integer  "position",   :default => 0, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "name",       :null => false
