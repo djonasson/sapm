@@ -17,7 +17,6 @@ Then(/^I should be on the edit page for the project$/) do
 end
 
 When(/^I forget to enter a name$/) do
-  project = FactoryGirl.build(:project)
   fill_in "project_name", with: ''
   click_on 'Create Project'
 end
@@ -37,7 +36,7 @@ end
 When(/^I edit project (\w+) with valid data$/) do |name|
   project = get_project_from_name(name)
   visit edit_admin_project_path(project)
-  fill_in "project_name", with: project.name + 'a'
+  fill_in "project_name", with: project.name
   click_on 'Update Project'
 end
 
