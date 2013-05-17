@@ -17,5 +17,5 @@ Feature: Create Category
     And I should be on the edit page for project Guadeo
 
   Scenario: Missing name
-    When I forget to enter a name
-    Then I should see a name required message
+    When I forget to enter a category name
+    Then I should see a category name required message

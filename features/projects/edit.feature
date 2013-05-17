@@ -11,7 +11,7 @@ Feature: Edit Project
   Scenario: Valid data
     When I edit project Guadeo with valid data
     Then I should see a successful project updated message
-    And I should be on the edit page for project Guadeo
+    And I should be on the admin edit page for project Guadeo
 
   Scenario: Missing name
     When I edit project Guadeo forgetting to give a name

@@ -2,7 +2,7 @@
 
   .btn-group.pull-right
     %a.btn.btn-primary{ href: admin_project_path(@project) }
-      %i.icon-folder-close.icon-white
+      %i.icon-briefcase.icon-white
       Show project
     %a{ href: '#', class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } }
       %span.caret
@@ -21,7 +21,7 @@
     = f.input :name, as: :string, wrapper: :append do
       = f.input_field :name, autofocus: true
       %span.add-on>
-        %i.icon-folder-close
+        %i.icon-briefcase
 
   .form-actions
     = f.button :submit, class: 'btn-primary'

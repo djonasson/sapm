@@ -14,5 +14,5 @@ Feature: Create Project
     And I should be on the edit page for the project
 
   Scenario: Missing name
-    When I forget to enter a name
+    When I forget to enter a project name
     Then I should see a name required message

@@ -1,0 +1,8 @@
+%li.ui-state-default[category]
+  .btn.btn-link.handle.pull-left
+    %i.icon-resize-vertical
+  = link_to category.display_name, '#'
+
+  - unless category.children.blank?
+    %ul.nav.nav-tabs.nav-stacked.sortable
+      = render partial: 'categories/edit_category', collection: category.children, as: :category

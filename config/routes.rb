@@ -12,7 +12,9 @@ Sapm::Application.routes.draw do
     resources :users
   end
 
-  resources :projects, only: [:index, :show, :edit]
+  resources :projects, only: [:index, :show, :edit] do
+    resources :categories
+  end
 
   resource :profile, only: [:show]
 

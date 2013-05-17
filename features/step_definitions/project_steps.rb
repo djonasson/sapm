@@ -16,7 +16,7 @@ Then(/^I should be on the edit page for the project$/) do
   current_path.should == edit_admin_project_path(Project.last)
 end
 
-When(/^I forget to enter a name$/) do
+When(/^I forget to enter a project name$/) do
   fill_in "project_name", with: ''
   click_on 'Create Project'
 end
@@ -40,9 +40,14 @@ When(/^I edit project (\w+) with valid data$/) do |name|
   click_on 'Update Project'
 end
 
-Then(/^I should be on the edit page for project (\w+)$/) do |name|
+Then(/^I should be on the admin edit page for project (\w+)$/) do |name|
   project = get_project_from_name(name)
   current_path.should == edit_admin_project_path(project)
+end
+
+Then(/^I should be on the edit page for project (\w+)$/) do |name|
+  project = get_project_from_name(name)
+  current_path.should == edit_project_path(project)
 end
 
 When(/^I edit project (\w+) forgetting to give a name$/) do |name|

@@ -2,77 +2,19 @@
 
   .btn-group.pull-right
     %a.btn.btn-primary{ href: project_path(@project) }
-      %i.icon-folder-close.icon-white
+      %i.icon-briefcase.icon-white
       Show Project
 
   = title(@project.display_name)
 
 -#= render @project.categories
 
-%ul.nav.nav-tabs.nav-stacked.sortable
+.btn-toolbar
+  .btn-group
+    %a.btn.btn-primary{ href: new_project_category_path(@project) }
+      %i.icon-folder-close.icon-white
+      New Category
 
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 1', '#'
-
-    %ul.nav.nav-tabs.nav-stacked.sortable
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 1', '#'
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 2', '#'
-
-        %ul.nav.nav-tabs.nav-stacked.sortable
-
-          %li.ui-state-default
-            .btn.btn-link.handle.pull-left
-              %i.icon-resize-vertical
-            = link_to 'Sub Sub-Category 1', '#'
-
-          %li.ui-state-default
-            .btn.btn-link.handle.pull-left
-              %i.icon-resize-vertical
-            = link_to 'Sub Sub-Category 2', '#'
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 3', '#'
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 2', '#'
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 3', '#'
-
-    %ul.nav.nav-tabs.nav-stacked.sortable
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 1', '#'
-
-      %li.ui-state-default
-        .btn.btn-link.handle.pull-left
-          %i.icon-resize-vertical
-        = link_to 'Sub-Category 2', '#'
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 4', '#'
-
-  %li.ui-state-default
-    .btn.btn-link.handle.pull-left
-      %i.icon-resize-vertical
-    = link_to 'Category 5', '#'
+- unless @project.categories.blank?
+  %ul.nav.nav-tabs.nav-stacked.sortable
+    = render partial: 'categories/edit_category', collection: @project.categories, as: :category
