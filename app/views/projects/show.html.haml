@@ -1,9 +1,10 @@
 .page-header
 
-  .btn-group.pull-right
-    %a.btn.btn-primary{ href: edit_project_path(@project) }
-      %i.icon-briefcase.icon-white
-      Edit Project
+  .btn-toolbar.pull-right
+    .btn-group
+      = link_to edit_project_path(@project), class: 'btn btn-primary' do
+        %i.icon-edit.icon-white
+        Edit Project
 
   = title(@project.display_name)
 

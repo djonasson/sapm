@@ -18,4 +18,13 @@ module ApplicationHelper
     result = value.presence || empty_value
     result.is_a?(Time) ? l(result) : result
   end
+
+  def leveled_title(title, level = 1)
+    tag_name = "h#{level}"
+    content_tag(tag_name, title)
+  end
+
+  def leveled_block(level = 0)
+    content_tag(:div, class: "level_#{level}") { yield }
+  end
 end

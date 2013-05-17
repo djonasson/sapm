@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   before_filter :load_project
-  before_filter :load_category, only: [:edit, :update]
+  before_filter :load_category, only: [:edit, :update, :destroy]
 
   def new
     @category = @project.categories.new parent_id: params[:parent_id]
@@ -28,11 +28,11 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    redirect_to(project_path(@project), alert: "category not found") and return if @category.nil?
+    redirect_to(edit_project_path(@project), alert: "category not found") and return if @category.nil?
     if @category.destroy
-      redirect_to(project_path(@project), notice: "Successfully deleted category")
+      redirect_to(edit_project_path(@project), notice: "Successfully deleted category")
     else
-      redirect_to(project_path(@project), alert: "Categorycouldn't be deleted")
+      redirect_to(edit_project_path(@project), alert: "Categorycouldn't be deleted")
     end
   end
 
