@@ -23,7 +23,11 @@ $(function() {
     axis: "y",
     cursor: "move",
     delay: 100,
-    handle: ".handle"
+    handle: ".handle",
+    forcePlaceholderSize: true
+    //start: function(e, ui) {
+    //  ui.placeholder.height(ui.item.height());
+    //}
   });
   $("ul.sortable").disableSelection();
 });

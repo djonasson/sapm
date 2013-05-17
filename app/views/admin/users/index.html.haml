@@ -24,11 +24,16 @@
             %i.icon-eye-open
         %td= link_to user.email, admin_user_path(user)
         %td
-          .btn-toolbarz
-            .btn-groupz
-              = link_to 'Show', admin_user_path(user), class: 'btn btn-small btn-primary'
-              = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-small btn-warning'
-              - unless user.administrator?
-                = link_to 'Delete User', admin_user_path(user), method: :delete, confirm: 'Are you sure that you want to permanently delete this user?', class: 'btn btn-small btn-danger'
+          .btn-group
+            = link_to admin_user_path(user), class: 'btn btn-small btn-primary' do
+              %i.icon-search.icon-white
+              Show
+            = link_to edit_admin_user_path(user), class: 'btn btn-small btn-warning' do
+              %i.icon-edit.icon-white
+              Edit
+            - unless user.administrator?
+              = link_to(admin_user_path(user), method: :delete, confirm: 'Are you sure that you want to permanently delete this user?', class: 'btn btn-small btn-danger') do
+                %i.icon-trash.icon-white
+                Delete
 
 = paginate @users

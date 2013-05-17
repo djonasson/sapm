@@ -1,9 +1,10 @@
 .page-header
 
-  .btn-group.pull-right
-    %a.btn.btn-primary{ href: new_admin_project_path }
-      %i.icon-folder-close.icon-white
-      New Project
+  .btn-toolbar
+    .btn-group.pull-right
+      = link_to new_admin_project_path, class: 'btn btn-primary' do
+        %i.icon-folder-close.icon-white
+        New Project
 
   = title('Projects')
 
@@ -19,11 +20,16 @@
         %td= link_to project.id, admin_project_path(project)
         %td= link_to project.name, admin_project_path(project)
         %td
-          .btn-toolbarz
-            .btn-groupz
-              = link_to 'Show', admin_project_path(project), class: 'btn btn-small btn-primary'
-              = link_to 'Edit', edit_admin_project_path(project), class: 'btn btn-small btn-warning'
-              = link_to 'Delete project', admin_project_path(project), method: :delete, confirm: 'Are you sure that you want to permanently delete this project?', class: 'btn btn-small btn-danger'
+          .btn-group
+            = link_to admin_project_path(project), class: 'btn btn-small btn-primary' do
+              %i.icon-search.icon-white
+              Show
+            = link_to edit_admin_project_path(project), class: 'btn btn-small btn-warning' do
+              %i.icon-edit.icon-white
+              Edit
+            = link_to(admin_project_path(project), method: :delete, confirm: 'Are you sure that you want to permanently delete this project?', class: 'btn btn-small btn-danger') do
+              %i.icon-trash.icon-white
+              Delete
 
 = paginate @projects
 

@@ -41,14 +41,17 @@ Given(/^I edit the category$/) do
 end
 
 When(/^I edit the category with valid data$/) do
-  pending # express the regexp above with the code you wish you had
+  category = FactoryGirl.build(:category)
+  fill_in "category_name", with: category.name
+  click_on 'Update Category'
 end
 
 Then(/^I should see a successful category updated message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "Successfully updated category"
 end
 
 When(/^I edit category Users forgetting to give a name$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in "category_name", with: ''
+  click_on 'Update Category'
 end
 

@@ -1,19 +1,23 @@
 %li.ui-state-default[category]
+
   .btn.btn-link.handle.pull-right
     %i.icon-resize-vertical
 
   .btn-group.pull-right
-    %a.btn.btn-small.btn-primary{ href: new_project_category_path(@project, parent_id: category.id) }
+    = link_to new_project_category_path(@project, parent_id: category.id), class: 'btn btn-small btn-success' do
       %i.icon-folder-close.icon-white
       New
 
   .btn-group.pull-right
-    %a.btn.btn-small{ href: project_category_path(@project, category) }
-      %i.icon-folder-close
+    = link_to project_category_path(@project, category), class: 'btn btn-small btn-primary' do
+      %i.icon-search.icon-white
       Show
-    %a.btn.btn-small{ href: edit_project_category_path(@project, category) }
-      %i.icon-folder-close
+    = link_to edit_project_category_path(@project, category), class: 'btn btn-small btn-warning' do
+      %i.icon-edit.icon-white
       Edit
+    = link_to(project_category_path(@project, category), method: :delete, confirm: 'Are you sure that you want to permanently delete this category and any sub-categories?', class: 'btn btn-small btn-danger') do
+      %i.icon-trash.icon-white
+      Delete
 
   = link_to category.display_name, project_category_path(@project, category)
 

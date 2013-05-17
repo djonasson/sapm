@@ -1,19 +1,17 @@
 .page-header
 
-  .btn-group.pull-right
-    %a.btn.btn-primary{ href: project_path(@project) }
-      %i.icon-briefcase.icon-white
-      Show Project
+  .btn-toolbar.pull-right
+    .btn-group
+      = link_to new_project_category_path(@project), class: 'btn btn-success' do
+        %i.icon-folder-close.icon-white
+        New Category
+    .btn-group
+      = link_to project_path(@project), class: 'btn btn-primary' do
+        %i.icon-briefcase.icon-white
+        Show Project
 
   = title(@project.display_name)
 
--#= render @project.categories
-
-.btn-toolbar
-  .btn-group
-    %a.btn.btn-primary{ href: new_project_category_path(@project) }
-      %i.icon-folder-close.icon-white
-      New Category
 
 - unless @project.categories.blank?
   %ul.nav.nav-tabs.nav-stacked.sortable
