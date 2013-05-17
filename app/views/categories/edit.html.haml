@@ -1,13 +1,11 @@
 .page-header
-  = title('New Category', @project.display_name)
+  = title(@category.display_name, @project.display_name)
 
-= simple_form_for(@category, url: project_categories_path(@project), html: { method: :post, class: 'form form-horizontal' }) do |f|
+= simple_form_for(@category, url: project_category_path(@project, @category), html: { method: :put, class: 'form form-horizontal' }) do |f|
 
   = f.error_notification
 
   .form-inputs
-    = f.input :parent_id, as: :hidden
-
     = f.input :name, as: :string, wrapper: :append do
       = f.input_field :name, autofocus: true
       %span.add-on>

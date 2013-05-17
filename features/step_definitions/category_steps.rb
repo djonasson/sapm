@@ -30,3 +30,25 @@ end
 Then(/^I should see a successful category creation message$/) do
   page.should have_content "Successfully created category"
 end
+
+Given(/^a category called (\w+) exists for the project (\w+)$/) do |category_name, project_name|
+  project = get_project_from_name(project_name)
+  @category = FactoryGirl.create(:category, name: category_name, project: project)
+end
+
+Given(/^I edit the category$/) do
+  visit edit_project_category_path(@category.project, @category)
+end
+
+When(/^I edit the category with valid data$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see a successful category updated message$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I edit category Users forgetting to give a name$/) do
+  pending # express the regexp above with the code you wish you had
+end
+

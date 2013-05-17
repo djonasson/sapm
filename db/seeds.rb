@@ -22,7 +22,7 @@ developer.confirm!
 # Projects
 # =============================================================================
 
-project = Project.create(name: "Test Project")
+project = Project.create(name: "Simple Agile Project Management")
 
 administrator.projects << project
 developer.projects << project
@@ -33,26 +33,32 @@ developer.projects << project
 # =============================================================================
 
 categories = [
-  category_1 = Category.create(name: "Category 1"),
-  category_2 = Category.create(name: "Category 2"),
-  category_3 = Category.create(name: "Category 3"),
-  category_4 = Category.create(name: "Category 4"),
-  category_5 = Category.create(name: "Category 5"),
-  category_6 = Category.create(name: "Category 6"),
+  category_users      = Category.create(name: "Users"),
+  category_projects   = Category.create(name: "Projects"),
+  category_categories = Category.create(name: "Categories"),
 ]
 
-sub_categories_1 = [
-  sub_category_1 = Category.create(name: "Sub Category 1"),
-  sub_category_2 = Category.create(name: "Sub Category 2"),
-  sub_category_3 = Category.create(name: "Sub Category 3"),
+sub_categories_user = [
+  Category.create(name: "Confirmation"),
+  Category.create(name: "Create"),
+  Category.create(name: "Edit"),
+  Category.create(name: "List"),
+  Category.create(name: "Profile"),
+  Category.create(name: "Sign in"),
+  Category.create(name: "Sign out"),
 ]
+category_users.children = sub_categories_user
 
-sub_categories_2 = [
-  sub_category_4 = Category.create(name: "Sub Category 1"),
-  sub_category_5 = Category.create(name: "Sub Category 2"),
-  sub_category_6 = Category.create(name: "Sub Category 3"),
+sub_categories_projects = [
+  Category.create(name: "Create"),
+  Category.create(name: "Edit"),
+  Category.create(name: "List"),
 ]
+category_projects.children = sub_categories_projects
 
-category_2.children = sub_categories_1
-category_6.children = sub_categories_2
+sub_categories_categories = [
+  Category.create(name: "Create"),
+]
+category_categories.children = sub_categories_categories
+
 project.categories << categories

@@ -10,7 +10,4 @@ class Project < ActiveRecord::Base
     name
   end
 
-  def to_param
-    "#{id}-#{display_name.parameterize}"
-  end
 end

@@ -1,7 +1,21 @@
 %li.ui-state-default[category]
-  .btn.btn-link.handle.pull-left
+  .btn.btn-link.handle.pull-right
     %i.icon-resize-vertical
-  = link_to category.display_name, '#'
+
+  .btn-group.pull-right
+    %a.btn.btn-small.btn-primary{ href: new_project_category_path(@project, parent_id: category.id) }
+      %i.icon-folder-close.icon-white
+      New
+
+  .btn-group.pull-right
+    %a.btn.btn-small{ href: project_category_path(@project, category) }
+      %i.icon-folder-close
+      Show
+    %a.btn.btn-small{ href: edit_project_category_path(@project, category) }
+      %i.icon-folder-close
+      Edit
+
+  = link_to category.display_name, project_category_path(@project, category)
 
   - unless category.children.blank?
     %ul.nav.nav-tabs.nav-stacked.sortable
