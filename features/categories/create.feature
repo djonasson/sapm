@@ -6,9 +6,9 @@ Feature: Create Category
 
   Background:
     Given I'm logged in as the user Daniel
-    And a project named Guadeo exists
+    And a project called Guadeo exists
     And I'm assigned the project Guadeo
-    And I'm on the edit project page
+    And I'm on the edit project Guadeo page
     And I click New Category
 
   Scenario: Valid data

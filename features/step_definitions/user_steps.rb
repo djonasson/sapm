@@ -270,9 +270,9 @@ end
 
 
 Given(/^I'm logged in as the user (\w+)$/) do |name|
-  user = set_user_from_name(name)
-  user.confirm!
-  sign_in user
+  @i = set_user_from_name(name)
+  @i.confirm!
+  sign_in @i
 end
 
 Given(/^I'm on the profile page$/) do

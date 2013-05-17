@@ -70,4 +70,3 @@ Then(/^I should be on the show page for project (\w+)$/) do |name|
   project = get_project_from_name(name)
   current_path.should == admin_project_path(project)
 end
-
