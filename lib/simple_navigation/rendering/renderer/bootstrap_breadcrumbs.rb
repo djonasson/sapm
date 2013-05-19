@@ -3,7 +3,9 @@ module SimpleNavigation
     class BootstrapBreadcrumbs < SimpleNavigation::Renderer::Base
 
       def render(item_container)
-        content_tag(:ul, li_tags(item_container).join(), { id: item_container.dom_id, class: "breadcrumb" })
+        tags = li_tags(item_container)
+        return '' if tags.blank?
+        content_tag(:ul, tags.join(), { id: item_container.dom_id, class: "breadcrumb" })
       end
 
       protected
