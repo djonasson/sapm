@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = @project.categories.new(params[:category])
+    @category = @project.categories.new(params[:category].merge({ project_id: @project.id }))
     if @category.save
       redirect_to edit_project_path(@project), notice: "Successfully created category."
     else
@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update_attributes(params[:category])
+    if @category.update_attributes(params[:category].merge({ project_id: @project.id }))
       redirect_to edit_project_path(@project), notice: "Successfully updated category."
     else
       render :edit

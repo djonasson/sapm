@@ -10,4 +10,8 @@ class Project < ActiveRecord::Base
     name
   end
 
+  def root_categories
+    categories.roots.all.sort_by!(&:position)
+  end
+
 end
