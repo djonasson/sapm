@@ -19,7 +19,25 @@
       %i.icon-trash.icon-white
       Delete
 
-  = link_to category.display_name, project_category_path(@project, category), class: 'header'
+  .categories.pull-right
+    %i.icon-folder-close
+    %span.badge.badge-success= 0
+    \/
+    %span.badge= category.descendants.count
+    &nbsp;
+    %i.icon-file
+    %span.badge.badge-success= 0
+    \/
+    %span.badge= rand(10) + 1
+    &nbsp;
+    %i.icon-list
+    %span.badge.badge-success= 0
+    \/
+    %span.badge= rand(40) + 1
+
+  = link_to project_category_path(@project, category), class: 'header' do
+    = category.display_name
+
 
   .content
     - unless category.children.blank?

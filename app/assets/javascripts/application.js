@@ -36,7 +36,7 @@ $(function() {
     collapsible: true,
     heightStyle: "content",
     header: "> li > .header",
-    icons: { "header": "icon-plus", "activeHeader": "icon-minus" }
+    icons: { "header": "icon-folder-close", "activeHeader": "icon-folder-open" }
   });
 
 });
