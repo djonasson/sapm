@@ -18,6 +18,7 @@
 
 
 $(function() {
+
   $("ul.sortable").sortable({
     placeholder: "ui-state-highlight",
     axis: "y",
@@ -30,4 +31,12 @@ $(function() {
     //}
   });
   $("ul.sortable").disableSelection();
+
+  $(".accordion").accordion({
+    collapsible: true,
+    heightStyle: "content",
+    header: "> li > .header",
+    icons: { "header": "icon-plus", "activeHeader": "icon-minus" }
+  });
+
 });

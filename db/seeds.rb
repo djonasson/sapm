@@ -58,6 +58,8 @@ category_projects.children = sub_categories_projects
 
 sub_categories_categories = [
   Category.create(name: "Create"),
+  Category.create(name: "Edit"),
+  Category.create(name: "Delete"),
 ]
 category_categories.children = sub_categories_categories
 

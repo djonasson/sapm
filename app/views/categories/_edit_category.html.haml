@@ -19,8 +19,9 @@
       %i.icon-trash.icon-white
       Delete
 
-  = link_to category.display_name, project_category_path(@project, category)
+  = link_to category.display_name, project_category_path(@project, category), class: 'header'
 
-  - unless category.children.blank?
-    %ul.nav.nav-tabs.nav-stacked.sortable
-      = render partial: 'categories/edit_category', collection: category.children, as: :category
+  .content
+    - unless category.children.blank?
+      %ul.nav.nav-tabs.nav-stacked.sortable.accordion
+        = render partial: 'categories/edit_category', collection: category.children, as: :category

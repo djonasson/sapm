@@ -50,9 +50,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
     primary.item :projects, 'My Projects', projects_url, if: -> { can? :read, Project } do |secondary|
-      current_user.projects.each do |project|
-        secondary.item "project_#{project.id}".to_sym, project.display_name, project_path(project)
-      end
+      project_menu(current_user.try(:projects), secondary)
     end
 
     ## Add an item which has a sub navigation (same params, but with block)

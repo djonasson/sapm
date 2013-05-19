@@ -55,3 +55,14 @@ When(/^I edit category Users forgetting to give a name$/) do
   click_on 'Update Category'
 end
 
+When(/^I click on the delete button for the category (\w+)$/) do |name|
+  category = Category.find_by_name(name)
+  within "#category_#{category.id}" do
+    click_on 'Delete'
+  end
+end
+
+Then(/^I should see a category successfully deleted message$/) do
+  page.should have_content "Successfully deleted category"
+end
+

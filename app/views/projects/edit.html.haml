@@ -13,6 +13,6 @@
   = title(@project.display_name)
 
 
-- unless @project.categories.blank?
-  %ul.nav.nav-tabs.nav-stacked.sortable
-    = render partial: 'categories/edit_category', collection: @project.categories, as: :category
+- unless @project.categories.roots.blank?
+  %ul.nav.nav-tabs.nav-stacked.sortable.accordion
+    = render partial: 'categories/edit_category', collection: @project.categories.roots, as: :category

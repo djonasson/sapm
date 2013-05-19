@@ -10,6 +10,9 @@
   .main
     .container-fluid
 
+      // Breadcrumbs
+      = render_navigation renderer: :bootstrap_breadcrumbs
+
       // Render any flash messages
       = render 'layouts/partials/flash_messages', locals: { flash: flash }
 
