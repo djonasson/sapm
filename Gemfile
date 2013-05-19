@@ -54,7 +54,7 @@ end
 group :test do
   gem 'capybara'
   gem 'coveralls', require: false
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'
