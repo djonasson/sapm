@@ -1,9 +1,10 @@
 .page-header
 
-  .btn-group.pull-right
-    %a.btn.btn-primary{ href: new_admin_user_path }
-      %i.icon-user.icon-white
-      New User
+  .btn-toolbar.pull-right
+    .btn-group
+      %a.btn.btn-primary{ href: new_admin_user_path }
+        %i.icon-user.icon-white
+        New User
 
   = title('Users')
 
@@ -13,6 +14,7 @@
       %th ID
       %th Name
       %th E-mail
+      %th Projects
       %th Actions
   %tbody
     - @users.each do |user|
@@ -23,6 +25,10 @@
           - if user.administrator?
             %i.icon-eye-open
         %td= link_to user.email, admin_user_path(user)
+        %td
+          %ul
+            - user.projects.each do |project|
+              %li= link_to project.display_name, admin_project_path(project)
         %td
           .btn-group
             = link_to admin_user_path(user), class: 'btn btn-small btn-primary' do
