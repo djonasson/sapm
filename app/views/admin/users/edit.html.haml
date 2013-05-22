@@ -2,7 +2,7 @@
 
   .btn-group.pull-right
     %a.btn.btn-primary{ href: admin_user_path(@user) }
-      %i.icon-user.icon-white
+      %i.icon-search.icon-white
       Show User
     %a{ href: '#', class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown" } }
       %span.caret
@@ -27,6 +27,8 @@
       = f.input_field :email
       %span.add-on>
         %i.icon-envelope
+
+    = f.association :projects, as: :check_boxes
 
   .form-actions
     = f.button :submit, class: 'btn-primary'

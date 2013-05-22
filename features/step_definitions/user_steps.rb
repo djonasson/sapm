@@ -278,3 +278,23 @@ end
 Given(/^I'm on the profile page$/) do
   visit profile_path
 end
+
+
+Given(/^I'm on the edit page for the user (\w+)$/) do |name|
+  user = get_user_from_name(name)
+  visit edit_admin_user_path(user)
+end
+
+When(/^I associate the project (\w+) with the user (\w+)$/) do |project_name, user_name|
+  within('.user_projects') do
+    check project_name
+  end
+  click_on 'Update User'
+end
+
+Then(/^the user (\w+) should be associated with the project (\w+)$/) do |user_name, project_name|
+  user = get_user_from_name(user_name)
+  project = get_project_from_name(project_name)
+  user.projects.should include(project)
+end
+
