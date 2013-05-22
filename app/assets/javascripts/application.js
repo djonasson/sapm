@@ -39,4 +39,11 @@ $(function() {
     icons: { "header": "icon-folder-close", "activeHeader": "icon-folder-open" }
   });
 
+  $('.accordion').each(function(idx, item) {
+    expanded = $(item).find("[data-expanded='true']").first().index()
+    if (expanded > -1) {
+      $(item).accordion("option", "active", expanded);
+    }
+  });
+
 });
