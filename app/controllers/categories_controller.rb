@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update_attributes(params[:category].merge({ project_id: @project.id }))
-      redirect_to edit_project_path(@project), notice: "Successfully updated category."
+      redirect_to edit_project_path(@project, category_id: @category.id), notice: "Successfully updated category."
     else
       render :edit
     end
