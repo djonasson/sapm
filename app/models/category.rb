@@ -18,6 +18,20 @@ class Category < ActiveRecord::Base
     name
   end
 
+  def move_to(new_position)
+    if self.update_attribute(:position, new_position)
+      last_occupied = position
+      Category.transaction do
+        siblings.where("position >= ?", position).all.sort_by!(&:position).each do |cat|
+          cat.update_attribute(:position, last_occupied + 1) if cat.position != last_occupied + 1
+          last_occupied += 1
+        end
+      end
+      true
+    else
+      false
+    end
+  end
 
   private
 

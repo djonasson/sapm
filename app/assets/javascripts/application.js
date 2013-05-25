@@ -46,4 +46,10 @@ $(function() {
     }
   });
 
+  $("ul.sortable").on("sortbeforestop", function(event, ui) {
+    url = ui.item.attr('data-url');
+    position = ui.item.index();
+    $.post(url, { position: position });
+  });
+
 });

@@ -1,7 +1,7 @@
 - current_category ||= -1
 - expanded = category.self_and_descendants.map(&:id).include?(current_category.to_i).to_s
 
-%li.ui-state-default[category]{ data: { expanded: expanded } }
+%li.ui-state-default[category]{ data: { expanded: expanded, url: move_project_category_path(@project, category) } }
 
   .btn.btn-link.handle.pull-right
     %i.icon-resize-vertical

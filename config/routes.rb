@@ -13,7 +13,11 @@ Sapm::Application.routes.draw do
   end
 
   resources :projects, only: [:index, :show, :edit] do
-    resources :categories
+    resources :categories do
+      member do
+        post 'move'
+      end
+    end
   end
 
   resource :profile, only: [:show]
