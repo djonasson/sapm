@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
   # Action called by AJAX when a category changes position.
   def move
     new_position = params[:position] || @category.position
-    if @category.move_to new_position
+    if @category.move_to_position new_position
       render text: 'success'
     else
       render text: 'failure'

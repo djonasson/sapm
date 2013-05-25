@@ -10,7 +10,7 @@ class Category < ActiveRecord::Base
   validates :position, presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  validate :parent_valid
+  #validate :parent_valid
 
   before_create :set_position
 
@@ -18,7 +18,7 @@ class Category < ActiveRecord::Base
     name
   end
 
-  def move_to(new_position)
+  def move_to_position(new_position)
     if self.update_attribute(:position, new_position)
       last_occupied = position
       Category.transaction do
