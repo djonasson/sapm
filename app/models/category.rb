@@ -19,10 +19,18 @@ class Category < ActiveRecord::Base
   end
 
   def move_to_position(new_position)
+    moving_down = position < new_position
     if self.update_attribute(:position, new_position)
-      last_occupied = position
       Category.transaction do
-        siblings.where("position >= ?", position).all.sort_by!(&:position).each do |cat|
+        last_occupied = -1
+        operator = moving_down ? :<= : :<
+        siblings.where("position #{operator} ?", position).all.sort_by!(&:position).each do |cat|
+          cat.update_attribute(:position, last_occupied + 1) if cat.position != last_occupied + 1
+          last_occupied += 1
+        end
+        last_occupied = position
+        operator = moving_down ? :> : :>=
+        siblings.where("position #{operator} ?", position).all.sort_by!(&:position).each do |cat|
           cat.update_attribute(:position, last_occupied + 1) if cat.position != last_occupied + 1
           last_occupied += 1
         end
