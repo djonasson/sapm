@@ -19,6 +19,7 @@ class Category < ActiveRecord::Base
   end
 
   def move_to_position(new_position)
+    # TODO: Refactor - it shouldn't be necessary to make separate queries. Put up/down logic inside loop.
     moving_down = position < new_position
     if self.update_attribute(:position, new_position)
       Category.transaction do
@@ -46,7 +47,7 @@ class Category < ActiveRecord::Base
   ##
   # We only allow a parent category that belongs to the same project.
   def parent_valid
-    # TODO:
+    # TODO: Should we require the project to always be set for every category?
   end
 
   ##
