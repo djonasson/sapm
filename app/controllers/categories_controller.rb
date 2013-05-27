@@ -1,7 +1,10 @@
 class CategoriesController < ApplicationController
 
   before_filter :load_project
-  before_filter :load_category, only: [:edit, :update, :destroy, :move]
+  before_filter :load_category, only: [:show, :edit, :update, :destroy, :move]
+
+  def show
+  end
 
   def new
     @category = @project.categories.new parent_id: params[:parent_id]
@@ -28,24 +31,24 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    redirect_to(edit_project_path(@project), alert: "category not found") and return if @category.nil?
+    redirect_to(edit_project_path(@project), alert: "Category not found.") and return if @category.nil?
     if @category.destroy
-      redirect_to(edit_project_path(@project), notice: "Successfully deleted category")
+      redirect_to(edit_project_path(@project), notice: "Successfully deleted category.")
     else
-      redirect_to(edit_project_path(@project), alert: "Categorycouldn't be deleted")
+      redirect_to(edit_project_path(@project), alert: "Category couldn't be deleted.")
     end
   end
 
   ##
-  # Action called by AJAX when a category changes position.
+  # Action called when a category changes position (AJAX).
   def move
-    new_position = params[:position] || @category.position
-    if @category.move_to_position new_position
+    if @category.move_to_position(params[:position])
       render text: 'success'
     else
       render text: 'failure'
     end
   end
+
 
   private
 

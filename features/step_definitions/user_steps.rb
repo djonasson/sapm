@@ -18,10 +18,6 @@ When(/^I enter valid user data$/) do
   fill_in_user_form FactoryGirl.build(:user)
 end
 
-Then(/^I should see a successful user creation message$/) do
-  page.should have_content "Successfully created user"
-end
-
 Then(/^I should be on the edit page for the newly created user$/) do
   current_path.should == edit_admin_user_path(User.last)
 end
@@ -57,10 +53,6 @@ When(/^I edit (\w+) with valid data$/) do |name|
   user = get_user_from_name(name)
   visit edit_admin_user_path(user)
   fill_in_user_form(user, false)
-end
-
-Then(/^I should see a successful user updated message$/) do
-  page.should have_content "Successfully updated user"
 end
 
 Then(/^I should be on the edit page for (\w+)$/) do |name|

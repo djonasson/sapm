@@ -27,27 +27,21 @@ When(/^I enter valid data for a new category$/) do
   click_on 'Create Category'
 end
 
-Then(/^I should see a successful category creation message$/) do
-  page.should have_content "Successfully created category"
-end
-
 Given(/^a category called (\w+) exists for the project (\w+)$/) do |category_name, project_name|
   project = get_project_from_name(project_name)
-  @category = FactoryGirl.create(:category, name: category_name, project: project)
+  category = FactoryGirl.create(:category, name: category_name, project: project)
+  set_category_from_name(category.name, category)
 end
 
-Given(/^I edit the category$/) do
-  visit edit_project_category_path(@category.project, @category)
+Given(/^I edit the category (\w+)$/) do |name|
+  category = get_category_from_name(name)
+  visit edit_project_category_path(category.project, category)
 end
 
 When(/^I edit the category with valid data$/) do
   category = FactoryGirl.build(:category)
   fill_in "category_name", with: category.name
   click_on 'Update Category'
-end
-
-Then(/^I should see a successful category updated message$/) do
-  page.should have_content "Successfully updated category"
 end
 
 When(/^I edit category Users forgetting to give a name$/) do
@@ -62,7 +56,12 @@ When(/^I click on the delete button for the category (\w+)$/) do |name|
   end
 end
 
-Then(/^I should see a category successfully deleted message$/) do
-  page.should have_content "Successfully deleted category"
+Given(/^I'm on the show category (\w+) page$/) do |name|
+  category = Category.find_by_name(name)
+  visit project_category_path(category.project, category)
 end
 
+Then(/^I should be on the show page for category (\w+)/) do |name|
+  category = Category.find_by_name(name)
+  visit project_category_path(category.project, category)
+end

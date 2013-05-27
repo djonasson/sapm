@@ -10,7 +10,7 @@ Feature: Edit Category
     And I'm assigned the project Guadeo
     And a category called Users exists for the project Guadeo
     And I'm on the edit project Guadeo page
-    And I edit the category
+    And I edit the category Users
 
   Scenario: Valid data
     When I edit the category with valid data

@@ -3,6 +3,7 @@
     .name
       = leveled_title(category.name, category.level + 2)
     .body
+      %ul.features= render category.features
       = render category.children
 
 -#.category

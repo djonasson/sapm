@@ -1,0 +1,18 @@
+.page-header
+
+  .btn-toolbar.pull-right
+    .btn-group
+      = link_to edit_project_path(@project), class: 'btn' do
+        %i.icon-edit
+        Edit Project
+      = link_to edit_project_category_path(@project, @category), class: 'btn btn-primary' do
+        %i.icon-edit.icon-white
+        Edit Category
+    .btn-group
+      = link_to new_project_category_feature_path(@project, @category), class: 'btn btn-success' do
+        %i.icon-file.icon-white
+        New Feature
+
+  = title(@category.display_name)
+
+= render @category.features

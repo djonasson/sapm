@@ -8,10 +8,6 @@ When(/^I enter valid data for a new project$/) do
   click_on 'Create Project'
 end
 
-Then(/^I should see a successful project creation message$/) do
-  page.should have_content "Successfully created project"
-end
-
 Then(/^I should be on the edit page for the project$/) do
   current_path.should == edit_admin_project_path(Project.last)
 end
@@ -27,10 +23,6 @@ end
 
 Given(/^a project called (\w+) exists$/) do |name|
   set_project_from_name(name)
-end
-
-Then(/^I should see a successful project updated message$/) do
-  page.should have_content "Successfully updated project"
 end
 
 When(/^I edit project (\w+) with valid data$/) do |name|

@@ -5,6 +5,7 @@ class Category < ActiveRecord::Base
   attr_protected :lft, :rgt, :depth
 
   belongs_to :project
+  has_many :features
 
   validates :name, presence: true
   validates :position, presence: true,
@@ -19,6 +20,7 @@ class Category < ActiveRecord::Base
   end
 
   def move_to_position(new_position)
+    new_position ||= position
     # TODO: Refactor - it shouldn't be necessary to make separate queries. Put up/down logic inside loop.
     moving_down = position < new_position
     if self.update_attribute(:position, new_position)
