@@ -18,6 +18,9 @@ Sapm::Application.routes.draw do
         post 'move'
       end
       resources :features do
+        member do
+          post 'move'
+        end
       end
     end
   end

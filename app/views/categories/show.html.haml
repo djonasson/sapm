@@ -15,4 +15,6 @@
 
   = title(@category.display_name)
 
-= render @category.features
+- unless @category.features.blank?
+  %ul.nav.nav-tabs.nav-stacked.sortable.accordion
+    = render @category.features.order(:position), locals: { current_category: @current_feature }

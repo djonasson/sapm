@@ -40,15 +40,15 @@ class FeaturesController < ApplicationController
   #   end
   # end
 
-  # ##
-  # # Action called when a feature changes position (AJAX).
-  # def move
-  #   if @feature.move_to_position(params[:position])
-  #     render text: 'success'
-  #   else
-  #     render text: 'failure'
-  #   end
-  # end
+  ##
+  # Action called when a feature changes position (AJAX).
+  def move
+    if @feature.move_to_position(params[:position])
+      render text: 'success'
+    else
+      render text: 'failure'
+    end
+  end
 
 
   private
