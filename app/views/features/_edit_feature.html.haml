@@ -1,0 +1,48 @@
+- current_feature ||= -1
+- expanded = feature.id == current_feature.to_i
+
+%li.ui-state-default[feature]{ data: { expanded: expanded, url: move_project_category_feature_path(@project, @category, feature) } }
+
+  .btn.btn-link.handle.pull-right
+    %i.icon-resize-vertical
+
+  -#.btn-group.pull-right
+  -#  = link_to new_project_category_feature_scenario_path(@project, @category, feature, feature_id: feature.id), class: 'btn btn-small btn-success' do
+  -#    %i.icon-folder-close.icon-white
+  -#    New
+
+  .btn-group.pull-right
+    = link_to project_category_feature_path(@project, @category, feature), class: 'btn btn-small btn-primary' do
+      %i.icon-search.icon-white
+      Show
+    = link_to edit_project_category_feature_path(@project, @category, feature), class: 'btn btn-small btn-warning' do
+      %i.icon-edit.icon-white
+      Edit
+    = link_to(project_category_feature_path(@project, @category, feature), method: :delete, confirm: 'Are you sure that you want to permanently delete this feature and all its scenarios?', class: 'btn btn-small btn-danger') do
+      %i.icon-trash.icon-white
+      Delete
+
+  -#.categories.pull-right
+  -#  %i.icon-folder-close
+  -#  %span.badge.badge-success= 0
+  -#  \/
+  -#  %span.badge= category.descendants.count
+  -#  &nbsp;
+  -#  %i.icon-file
+  -#  %span.badge.badge-success= 0
+  -#  \/
+  -#  %span.badge= rand(10) + 1
+  -#  &nbsp;
+  -#  %i.icon-list
+  -#  %span.badge.badge-success= 0
+  -#  \/
+  -#  %span.badge= rand(40) + 1
+
+  = link_to '#', class: 'header' do
+    = feature.display_name
+
+
+  .content
+    -#- unless feature.scenarios.blank?
+    -#  %ul
+    -#    = render feature.scenarios

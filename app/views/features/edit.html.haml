@@ -1,13 +1,11 @@
 .page-header
-  = title('New Feature', @category.display_name)
+  = title(@feature.display_name, @category.display_name)
 
-= simple_form_for(@feature, url: project_category_features_path(@project, @category), html: { method: :post, class: 'form form-horizontal' }) do |f|
+= simple_form_for(@feature, url: project_category_feature_path(@project, @category, @feature), html: { method: :put, class: 'form form-horizontal' }) do |f|
 
   = f.error_notification
 
   .form-inputs
-    = f.input :category_id, as: :hidden
-
     = f.input :name, as: :string, wrapper: :append do
       = f.input_field :name, autofocus: true
       %span.add-on>
@@ -19,4 +17,5 @@
 
   .form-actions
     = f.button :submit, class: 'btn btn-primary'
-    = link_to "Cancel", project_category_path(@project, @category), class: 'btn'
+    = link_to "Cancel", project_category_path(@project, @category, feature_id: @feature.id), class: 'btn'
+

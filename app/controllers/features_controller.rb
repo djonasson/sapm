@@ -20,16 +20,16 @@ class FeaturesController < ApplicationController
     end
   end
 
-  # def edit
-  # end
+  def edit
+  end
 
-  # def update
-  #   if @feature.update_attributes(params[:feature].merge({ category_id: @category.id }))
-  #     redirect_to project_category_path(@project, @category, feature_id: @feature.id), notice: "Successfully updated feature."
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    if @feature.update_attributes(params[:feature].merge({ category_id: @category.id }))
+      redirect_to project_category_path(@project, @category, feature_id: @feature.id), notice: "Successfully updated feature."
+    else
+      render :edit
+    end
+  end
 
   # def destroy
   #   redirect_to(project_category_path(@project, @category), alert: "Feature not found.") and return if @feature.nil?
