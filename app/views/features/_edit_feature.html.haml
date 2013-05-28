@@ -43,6 +43,19 @@
 
 
   .content
+
+    - unless feature.description.blank?
+      .description
+        %pre= feature.description
+
+    - unless feature.background.blank?
+      .background
+        .title
+          %h5 Background
+        .body
+          %pre= feature.background
+
     -#- unless feature.scenarios.blank?
-    -#  %ul
-    -#    = render feature.scenarios
+      .scenarios
+        -#%ul
+        -#  = render feature.scenarios
