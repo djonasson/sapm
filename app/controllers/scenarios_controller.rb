@@ -21,16 +21,16 @@ class ScenariosController < ApplicationController
     end
   end
 
-  # def edit
-  # end
+  def edit
+  end
 
-  # def update
-  #   if @scenario.update_attributes(params[:scenario].merge({ feature_id: @feature.id }))
-  #     redirect_to project_category_feature_path(@project, @category, @feature, scenario_id: @scenario.id), notice: "Successfully updated scenario."
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    if @scenario.update_attributes(params[:scenario].merge({ feature_id: @feature.id }))
+      redirect_to project_category_feature_path(@project, @category, @feature, scenario_id: @scenario.id), notice: "Successfully updated scenario."
+    else
+      render :edit
+    end
+  end
 
   # def destroy
   #   redirect_to(project_category_feature_path(@project, @category, @feature), alert: "Scenario not found.") and return if @scenario.nil?

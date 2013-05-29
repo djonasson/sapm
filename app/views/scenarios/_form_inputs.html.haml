@@ -1,7 +1,15 @@
 .form-inputs
+
+  - unless f.object.feature.background.blank?
+    .control-group
+      %label.control-label.muted Background
+      .controls
+        .background
+          %pre.muted= f.object.feature.background
+
   = f.input :name, as: :string, wrapper: :append do
     = f.input_field :name, autofocus: true, class: 'input-xxlarge'
     %span.add-on>
       %i.icon-list
 
-  = f.input :description, as: :text, hint: "In order to...<br/>As a...<br/>I should...", input_html: { rows: 3, class: 'input-xxlarge' }
+  = f.input :description, as: :text, hint: "Given...<br/>When...<br/>Then...", input_html: { rows: 3, class: 'input-xxlarge' }

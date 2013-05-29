@@ -20,4 +20,3 @@ Feature: Edit Feature
   Scenario: Missing name
     When I edit feature Create forgetting to give a name
     Then I should see a feature name required message
-
