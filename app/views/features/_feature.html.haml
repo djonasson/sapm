@@ -1,1 +1,13 @@
-%li= feature.display_name
+.feature[feature]
+  .title
+    %h4
+      %i.icon-file
+      = feature.display_name
+  .body
+    .description
+      %pre= feature.description
+    .background
+      .title
+        %h5 Background
+      .body
+        %pre= feature.background

@@ -15,6 +15,6 @@
 
   = title(@category.display_name)
 
-- unless @category.features.blank?
+- unless @features.blank?
   %ul.nav.nav-tabs.nav-stacked.sortable.accordion
-    = render partial: 'features/edit_feature', collection: @category.features.order(:position), as: :feature, locals: { current_category: @current_feature }
+    = render partial: 'features/edit_feature', collection: @features, as: :feature

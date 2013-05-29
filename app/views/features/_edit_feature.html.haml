@@ -22,21 +22,11 @@
       %i.icon-trash.icon-white
       Delete
 
-  -#.categories.pull-right
-  -#  %i.icon-folder-close
-  -#  %span.badge.badge-success= 0
-  -#  \/
-  -#  %span.badge= category.descendants.count
-  -#  &nbsp;
-  -#  %i.icon-file
-  -#  %span.badge.badge-success= 0
-  -#  \/
-  -#  %span.badge= rand(10) + 1
-  -#  &nbsp;
-  -#  %i.icon-list
-  -#  %span.badge.badge-success= 0
-  -#  \/
-  -#  %span.badge= rand(40) + 1
+  .features.pull-right
+    %i.icon-list
+    %span.badge.badge-success= 0
+    \/
+    %span.badge= rand(10)+1 #feature.scenarios.count
 
   = link_to '#', class: 'header' do
     = feature.display_name
@@ -57,5 +47,7 @@
 
     -#- unless feature.scenarios.blank?
       .scenarios
-        -#%ul
-        -#  = render feature.scenarios
+        .title
+          %h5 Scenarios
+        .body
+          -#= render feature.scenarios

@@ -15,6 +15,10 @@ class Category < ActiveRecord::Base
 
   before_create :set_position
 
+  def ordered_children
+    children.all.sort_by!(&:position)
+  end
+
   def display_name
     name
   end

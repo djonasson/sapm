@@ -3,24 +3,5 @@
     .name
       = leveled_title(category.name, category.level + 2)
     .body
-      %ul.features= render category.features
-      = render category.children
--#.category
--#  .name
--#    %h3 Sub Category 1
--#  .body
--#    .feature
--#      .name
--#        %strong Create User
--#      .description
--#        .blockquote
--#          %p In order to assign people to projects
--#          %p As an administrator
--#          %p I want to create a new user
--#      .body.well
--#        TODO
--#.category
--#  .name
--#    %h3 Sub Category 2
--#  .body
--#    TODO
+      .features= render category.features.order(:position)
+      .children= render category.ordered_children

@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
   before_filter :load_category, only: [:show, :edit, :update, :destroy, :move]
 
   def show
+    @features = Feature.where(category_id: @category.self_and_descendants.map(&:id)).order(:position)
   end
 
   def new

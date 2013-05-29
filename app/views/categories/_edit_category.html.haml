@@ -45,4 +45,4 @@
   .content
     - unless category.children.blank?
       %ul.nav.nav-tabs.nav-stacked.sortable.accordion
-        = render partial: 'categories/edit_category', collection: category.children, as: :category, locals: { current_category: current_category }
+        = render partial: 'categories/edit_category', collection: category.ordered_children, as: :category, locals: { current_category: current_category }
