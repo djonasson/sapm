@@ -1,8 +1,8 @@
-Feature: Edit Feature
+Feature: Delete Feature
 
   In order ensure that project details stay correct
   As an authenticated user
-  I want to edit a feature
+  I want to delete a feature
 
   Background:
     Given I'm logged in as the user Daniel
@@ -10,14 +10,9 @@ Feature: Edit Feature
     And I'm assigned the project Guadeo
     And a category called Users exists for the project Guadeo
     And a feature called Create exists for the category Users
-    And I'm on the edit feature Create page
+    And I'm on the show category Users page
 
-  Scenario: Valid data
-    When I edit the feature with valid data
-    Then I should see a successful feature updated message
+  Scenario: Delete
+    When I click on the delete button for the feature Create
+    Then I should see a feature successfully deleted message
     And I should be on the show page for the category Users
-
-  Scenario: Missing name
-    When I edit feature Create forgetting to give a name
-    Then I should see a feature name required message
-

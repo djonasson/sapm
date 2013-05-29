@@ -61,7 +61,7 @@ Given(/^I'm on the show category (\w+) page$/) do |name|
   visit project_category_path(category.project, category)
 end
 
-Then(/^I should be on the show page for category (\w+)/) do |name|
+Then(/^I should be on the show page for the category (\w+)/) do |name|
   category = Category.find_by_name(name)
   visit project_category_path(category.project, category)
 end

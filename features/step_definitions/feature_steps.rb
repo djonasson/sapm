@@ -40,3 +40,10 @@ When(/^I edit feature Create forgetting to give a name$/) do
   fill_in "feature_name", with: ''
   click_on 'Update Feature'
 end
+
+When(/^I click on the delete button for the feature (\w+)$/) do |name|
+  feature = get_feature_from_name(name)
+  within "#feature_#{feature.id}" do
+    click_on 'Delete'
+  end
+end

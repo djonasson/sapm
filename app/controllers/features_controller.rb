@@ -31,14 +31,14 @@ class FeaturesController < ApplicationController
     end
   end
 
-  # def destroy
-  #   redirect_to(project_category_path(@project, @category), alert: "Feature not found.") and return if @feature.nil?
-  #   if @feature.destroy
-  #     redirect_to(project_category_path(@project, @category), notice: "Successfully deleted feature.")
-  #   else
-  #     redirect_to(project_category_path(@project, @category), alert: "Feature couldn't be deleted.")
-  #   end
-  # end
+  def destroy
+    redirect_to(project_category_path(@project, @category), alert: "Feature not found.") and return if @feature.nil?
+    if @feature.destroy
+      redirect_to(project_category_path(@project, @category), notice: "Successfully deleted feature.")
+    else
+      redirect_to(project_category_path(@project, @category), alert: "Feature couldn't be deleted.")
+    end
+  end
 
   ##
   # Action called when a feature changes position (AJAX).

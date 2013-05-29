@@ -15,7 +15,7 @@ Feature: Create Feature
   Scenario: Valid data
     When I enter valid data for a new feature
     Then I should see a successful feature creation message
-    And I should be on the show page for category Users
+    And I should be on the show page for the category Users
 
   Scenario: Missing name
     When I forget to enter a feature name
