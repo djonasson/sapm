@@ -1,0 +1,9 @@
+.form-inputs
+  = f.input :name, as: :string, wrapper: :append do
+    = f.input_field :name, autofocus: true, class: 'input-xxlarge'
+    %span.add-on>
+      %i.icon-list
+
+  = f.input :description, as: :text, hint: "In order to...<br/>As a...<br/>I should...", input_html: { rows: 3, class: 'input-xxlarge' }
+
+  = f.input :background, as: :text, hint: "Given...<br/>When...<br/>Then...", input_html: { rows: 3, class: 'input-xxlarge' }

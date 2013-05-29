@@ -2,19 +2,8 @@
   = title(@feature.display_name, @category.display_name)
 
 = simple_form_for(@feature, url: project_category_feature_path(@project, @category, @feature), html: { method: :put, class: 'form form-horizontal' }) do |f|
-
   = f.error_notification
-
-  .form-inputs
-    = f.input :name, as: :string, wrapper: :append do
-      = f.input_field :name, autofocus: true
-      %span.add-on>
-        %i.icon-list
-
-    = f.input :description, as: :text, input_html: { rows: 3, class: 'input-xxlarge' }
-
-    = f.input :background, as: :text, input_html: { rows: 3, class: 'input-xxlarge' }
-
+  = render partial: 'form_inputs', locals: { f: f }
   .form-actions
     = f.button :submit, class: 'btn btn-primary'
     = link_to "Cancel", project_category_path(@project, @category, feature_id: @feature.id), class: 'btn'
