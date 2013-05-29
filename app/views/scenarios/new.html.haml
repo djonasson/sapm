@@ -1,0 +1,10 @@
+.page-header
+  = title('New Scenario', @feature.display_name)
+
+= simple_form_for(@scenario, url: project_category_feature_scenarios_path(@project, @category, @feature), html: { method: :post, class: 'form form-horizontal' }) do |f|
+  = f.error_notification
+  = render partial: 'form_inputs', locals: { f: f }
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
+    = link_to "Cancel", project_category_feature_path(@project, @category, @feature), class: 'btn'
+

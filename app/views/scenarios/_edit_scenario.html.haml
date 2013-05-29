@@ -1,0 +1,31 @@
+- current_scenario ||= -1
+- expanded = scenario.id == current_scenario.to_i
+
+%li.ui-state-default[scenario]{ data: { expanded: expanded, url: move_project_category_feature_scenario_path(@project, @category, @feature, scenario) } }
+
+  .btn.btn-link.handle.pull-right
+    %i.icon-resize-vertical
+
+  .btn-group.pull-right
+    = link_to edit_project_category_feature_scenario_path(@project, @category, @feature, scenario), class: 'btn btn-small btn-warning' do
+      %i.icon-edit.icon-white
+      Edit
+    = link_to(project_category_feature_scenario_path(@project, @category, @feature, scenario), method: :delete, confirm: 'Are you sure that you want to permanently delete this scenario?', class: 'btn btn-small btn-danger') do
+      %i.icon-trash.icon-white
+      Delete
+
+  -#.scenarios.pull-right
+  -#  %i.icon-list
+  -#  %span.badge.badge-success= 0
+  -#  \/
+  -#  %span.badge= rand(10)+1
+
+  = link_to '#', class: 'header' do
+    = scenario.display_name
+
+
+  .content
+
+    - unless scenario.description.blank?
+      .description
+        %pre= scenario.description

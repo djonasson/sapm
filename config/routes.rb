@@ -21,6 +21,11 @@ Sapm::Application.routes.draw do
         member do
           post 'move'
         end
+        resources :scenarios do
+          member do
+            post 'move'
+          end
+        end
       end
     end
   end

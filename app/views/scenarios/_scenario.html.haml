@@ -1,0 +1,9 @@
+.scenario[scenario]
+  .title
+    %h5
+      %i.icon-list
+      = scenario.display_name
+  .body
+    - unless scenario.description.blank?
+      .description
+        %pre= scenario.description
