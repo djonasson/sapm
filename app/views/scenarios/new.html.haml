@@ -1,5 +1,5 @@
 .page-header
-  = title('New Scenario', @feature.display_name)
+  = title('New Scenario', "for the feature #{@feature.display_name}")
 
 = simple_form_for(@scenario, url: project_category_feature_scenarios_path(@project, @category, @feature), html: { method: :post, class: 'form form-horizontal' }) do |f|
   = f.error_notification
