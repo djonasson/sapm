@@ -1,3 +1,9 @@
+class String
+  def clean
+    strip.gsub(/\n\s*/, "\n")
+  end
+end
+
 # =============================================================================
 # Users
 # =============================================================================
@@ -59,12 +65,12 @@ users_features = [
       In order to get access to protected sections of the site
       As a visitor that has been assigned an account
       I should be able to confirm my e-mail address
-    }.strip,
+    }.clean,
     background: %Q{
       Given I exist as a user
       And My account has not been confirmed
       And I'm on the activate account page
-    }.strip,
+    }.clean,
   ),
   Feature.create(
     name: "Create",
@@ -73,11 +79,11 @@ users_features = [
       In order to assign people to projects
       As an administrator
       I want to create a new user
-    }.strip,
+    }.clean,
     background: %Q{
       Given I'm logged in as an administrator
       And I'm on the new user page
-    }.strip,
+    }.clean,
   ),
   Feature.create(
     name: "Edit",
@@ -86,11 +92,11 @@ users_features = [
       In order to ensure that user permissions and details stay current
       As an administrator
       I want to edit a user
-    }.strip,
+    }.clean,
     background: %Q{
       Given I'm logged in as an administrator
       And a user called Daniel exists
-    }.strip,
+    }.clean,
   ),
   Feature.create(
     name: "List",
@@ -99,12 +105,12 @@ users_features = [
       In order to assign users to projects
       As an administrator
       I want to navigate available users
-    }.strip,
+    }.clean,
     background: %Q{
       Given I'm logged in as an administrator
       And a user called Daniel exists
       And I'm on the users list page
-    }.strip,
+    }.clean,
   ),
   Feature.create(
     name: "Profile",
@@ -113,11 +119,11 @@ users_features = [
       In order to keep my personal information updated
       As an authenticated user
       I want to manage my profile
-    }.strip,
+    }.clean,
     background: %Q{
       Given I'm logged in as the user Daniel
       And I'm on the profile page
-    }.strip,
+    }.clean,
   ),
   Feature.create(
     name: "Sign in",
@@ -126,8 +132,8 @@ users_features = [
       In order to get access to protected sections of the site
       As a visitor that has previously been assigned an account
       I should be able to sign in
-    }.strip,
-    background: %Q{}.strip,
+    }.clean,
+    background: %Q{}.clean,
   ),
   Feature.create(
     name: "Sign out",
@@ -136,8 +142,8 @@ users_features = [
       To protect my account from unauthorized access
       As a signed in user
       I should be able to sign out
-    }.strip,
-    background: %Q{}.strip,
+    }.clean,
+    background: %Q{}.clean,
   ),
 ]
 category_users.features << users_features
