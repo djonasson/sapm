@@ -47,3 +47,13 @@ When(/^I click on the delete button for the feature (\w+)$/) do |name|
     click_on 'Delete'
   end
 end
+
+Given(/^I'm on the show feature (\w+) page$/) do |name|
+  feature = get_feature_from_name(name)
+  visit project_category_feature_path(feature.category.project, feature.category, feature)
+end
+
+Then(/^I should be on the show page for the feature (\w+)$/) do |name|
+  feature = get_feature_from_name(name)
+  visit project_category_feature_path(feature.category.project, feature.category, feature)
+end

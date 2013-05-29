@@ -1,0 +1,40 @@
+.page-header
+
+  .btn-toolbar.pull-right
+    .btn-group
+      = link_to edit_project_path(@project), class: 'btn' do
+        %i.icon-edit
+        Edit Project
+      = link_to edit_project_category_path(@project, @category), class: 'btn' do
+        %i.icon-edit
+        Edit Category
+      = link_to edit_project_category_feature_path(@project, @category, @feature), class: 'btn btn-primary' do
+        %i.icon-edit.icon-white
+        Edit Feature
+    .btn-group
+      = link_to new_project_category_feature_scenario_path(@project, @category, @feature), class: 'btn btn-success' do
+        %i.icon-list.icon-white
+        New Scenario
+
+  = title(@feature.display_name)
+
+.feature[@feature]
+  .body
+    - unless @feature.description.blank?
+      .description
+        %pre= @feature.description
+    - unless @feature.background.blank?
+      .background
+        .title
+          %h5 Background
+        .body
+          %pre= @feature.background
+
+- unless @scenarios.blank?
+  .scenarios
+    .title
+      %h5 Scenarios
+    .body
+      %ul.nav.nav-tabs.nav-stacked.sortable.accordion
+        = render partial: 'scenarios/edit_scenario', collection: @scenarios, as: :scenario
+

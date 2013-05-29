@@ -4,10 +4,18 @@
       %i.icon-file
       = feature.display_name
   .body
-    .description
-      %pre= feature.description
-    .background
-      .title
-        %h5 Background
-      .body
-        %pre= feature.background
+    - unless feature.description.blank?
+      .description
+        %pre= feature.description
+    - unless feature.background.blank?
+      .background
+        .title
+          %h5 Background
+        .body
+          %pre= feature.background
+    - unless feature.scenarios.blank?
+      .scenarios
+        .title
+          %h5 Scenarios
+        .body
+          = render feature.scenarios

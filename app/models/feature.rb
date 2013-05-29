@@ -2,6 +2,7 @@ class Feature < ActiveRecord::Base
   attr_accessible :background, :category_id, :description, :name, :position
 
   belongs_to :category
+  has_many :scenarios
 
   validates :name, presence: true
   validates :position, presence: true,

@@ -5,6 +5,7 @@ class FeaturesController < ApplicationController
   before_filter :load_feature, only: [:show, :edit, :update, :destroy, :move]
 
   def show
+    @scenarios = @feature.scenarios.order(:position)
   end
 
   def new
