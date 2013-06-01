@@ -23,3 +23,7 @@
     %footer
       // Render the footer
       = render 'layouts/partials/footer'
+
+  = javascript_include_tag :application
+  - if content_for?(:javascript)
+    %script{ type: "text/javascript" }= yield :javascript

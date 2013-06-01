@@ -1,3 +1,5 @@
+= content_for(:javascript) { render 'show.js' }
+
 .page-header
 
   .btn-toolbar.pull-right
@@ -7,5 +9,35 @@
         Edit Project
 
   = title(@project.display_name)
+
+.btn-toolbar.pull-right
+
+  .btn-group.resource-filter
+    %button.btn.active{ name: 'everything' }
+      %i.icon-folder-close
+      %i.icon-file
+      %i.icon-list
+      Everything
+    %button.btn{ name: 'features' }
+      %i.icon-folder-close
+      %i.icon-file
+      Features
+    %button.btn{ name: 'categories' }
+      %i.icon-folder-close
+      Categories
+
+  .btn-group.content-filter
+    %button.btn.active{ name: 'all' }
+      %i.icon-plus
+      %i.icon-plus
+      %i.icon-plus
+      Everything
+    %button.btn{ name: 'description' }
+      %i.icon-plus
+      %i.icon-plus
+      Description
+    %button.btn{ name: 'names' }
+      %i.icon-plus
+      Names
 
 = render @project.root_categories
