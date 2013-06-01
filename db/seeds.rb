@@ -45,12 +45,12 @@ categories = [
 ]
 project.categories << categories
 
-[category_users, category_projects, category_categories].each do |category|
-  category.children << [
-    Category.create(name: "Sub Category 1", project: project),
-    Category.create(name: "Sub Category 2", project: project),
-  ]
-end
+#[category_users, category_projects, category_categories].each do |category|
+#  category.children << [
+#    Category.create(name: "Sub Category 1", project: project),
+#    Category.create(name: "Sub Category 2", project: project),
+#  ]
+#end
 
 
 # =============================================================================
