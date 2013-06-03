@@ -6,6 +6,7 @@ class Category < ActiveRecord::Base
 
   belongs_to :project
   has_many :features
+  has_many :scenarios, through: :features
 
   validates :name, presence: true
   validates :position, presence: true,

@@ -31,12 +31,12 @@
     %i.icon-file
     %span.badge.badge-success= 0
     \/
-    %span.badge= rand(10) + 1
+    %span.badge= category.features.count
     &nbsp;
     %i.icon-list
     %span.badge.badge-success= 0
     \/
-    %span.badge= rand(40) + 1
+    %span.badge= category.scenarios.count
 
   = link_to project_category_path(@project, category), class: 'header' do
     = category.display_name
