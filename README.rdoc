@@ -1,3 +1,9 @@
 == SAPM (Simple Agile Project Management)
 
 In development...
+
+= TODO
+
+* Dependencies (A needs to be implemented before B)
+* Move categories to other categories
+* 
