@@ -20,8 +20,8 @@ module Admin
 
       describe "GET 'show'" do
         it "returns http success" do
-          user = FactoryGirl.create(:user)
-          get 'show', id: user.id
+          resource = FactoryGirl.create(:user)
+          get 'show', id: resource.id
           response.should be_success
         end
       end
@@ -46,8 +46,8 @@ module Admin
 
       describe "GET 'edit'" do
         it "returns http success" do
-          user = FactoryGirl.create(:user)
-          get 'edit', id: user.id
+          resource = FactoryGirl.create(:user)
+          get 'edit', id: resource.id
           response.should be_success
         end
       end
@@ -66,13 +66,13 @@ module Admin
 
       describe "DELETE 'destroy'" do
         it "returns http success" do
-          user = FactoryGirl.create(:user)
-          delete 'destroy', id: user.id
+          resource = FactoryGirl.create(:user)
+          delete 'destroy', id: resource.id
           response.should redirect_to(admin_users_path)
         end
         it "redirects to index if user can't be deleted" do
-          user = FactoryGirl.create(:administrator)
-          delete 'destroy', id: user.id
+          resource = FactoryGirl.create(:administrator)
+          delete 'destroy', id: resource.id
           response.should redirect_to(admin_users_path)
         end
       end
@@ -88,8 +88,8 @@ module Admin
 
       describe "GET 'show'" do
         it "returns http success" do
-          user = FactoryGirl.create(:user)
-          get 'show', id: user.id
+          resource = FactoryGirl.create(:user)
+          get 'show', id: resource.id
           response.should redirect_to(new_user_session_path)
         end
       end
@@ -110,29 +110,28 @@ module Admin
 
       describe "GET 'edit'" do
         it "returns http success" do
-          user = FactoryGirl.create(:user)
-          get 'edit', id: user.id
+          resource = FactoryGirl.create(:user)
+          get 'edit', id: resource.id
           response.should redirect_to(new_user_session_path)
         end
       end
 
       describe "PUT 'update'" do
         it "returns http success" do
-          user = FactoryGirl.create(:user)
-          put 'update', id: user.id, user:  { name: 'name' }
+          resource = FactoryGirl.create(:user)
+          put 'update', id: resource.id, user:  { name: 'name' }
           response.should redirect_to(new_user_session_path)
         end
       end
 
       describe "DELETE 'destroy'" do
         it "returns http success" do
-          user = FactoryGirl.create(:user)
-          delete 'destroy', id: user.id
+          resource = FactoryGirl.create(:user)
+          delete 'destroy', id: resource.id
           response.should redirect_to(new_user_session_path)
         end
       end
     end
-
 
   end
 end
